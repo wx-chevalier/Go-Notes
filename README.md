@@ -8,7 +8,7 @@ Go 语言很多时候被描述为“类 C 语言”，或者是“21 世纪的 C
 
 ## RoadMap | 学习建议
 
-[Go-Series](https://github.com/wx-chevalier/Go-Series) 涵盖了 Golang 由浅入深的学习笔记，读者可以配套 [go-snippets](https://github.com/Dev-Snippets/go-snippets) 进行动手实践。接下来可以前往 [design-pattern-snippets](https://github.com/Dev-Snippets/design-pattern-snippets) 以及 [algorithm-snippets](https://github.com/Dev-Snippets/algorithm-snippets) 通过设计模式与算法来进行进一步的实践。最后，在笔者的 [go](https://github.com/topics/wx-go) 系列仓库中，您还可以查阅软件系统设计、微服务、数据库、分布式系统等等多领域的深入实践。
+[Go-Series](https://github.com/wx-chevalier/Go-Series) 涵盖了 Golang 由浅入深的学习笔记，更多的 Go 相关的教程、书籍、示例可以参考 [Awesome-Lists](https://github.com/wx-chevalier/Awesome-Lists)。读者可以配套 [go-snippets](https://github.com/Dev-Snippets/go-snippets) 进行动手实践。接下来可以前往 [design-pattern-snippets](https://github.com/Dev-Snippets/design-pattern-snippets) 以及 [algorithm-snippets](https://github.com/Dev-Snippets/algorithm-snippets) 通过设计模式与算法来进行进一步的实践。最后，在笔者的 [go](https://github.com/topics/wx-go) 系列仓库中，您还可以查阅软件系统设计、微服务、数据库、分布式系统等等多领域的深入实践。
 
 # About
 

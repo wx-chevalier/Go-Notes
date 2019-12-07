@@ -14,7 +14,7 @@ if v, ok := m["key"]; ok {
 
 比如我们通过`syscall`包的接口来修改文件的模式时，如果遇到错误我们可以通过将`err`强制断言为`syscall.Errno`错误类型来处理：
 
-```
+```go
 err := syscall.Chmod(":invalid path:", 0666)
 if err != nil {
 	log.Fatal(err.(syscall.Errno))

@@ -26,69 +26,12 @@ func main() {
     }
 }
 
-func Divide(value1 int,value2 int)(int, error) {
+func Divide(value1 int, value2 int)(int, error) {
     if(value2 == 0){
         return 0, errors.New("value2 mustn't be zero")
     }
     return value1/value2  , nil
 }
-```
-
-# 典型错误
-
-```go
-// PathError 记录一个错误以及产生该错误的路径和操作。
-type PathError struct {
-	Op string    // "open"、"unlink" 等等。
-	Path string  // 相关联的文件。
-	Err error    // 由系统调用返回。
-}
-
-func (e *PathError) Error() string {
-	return e.Op + " " + e.Path + ": " + e.Err.Error()
-}
-```
-
-PathError 的 Error 会生成如下错误信息：
-
-```go
-open /etc/passwx: no such file or directory
-```
-
-这种错误包含了出错的文件名、操作和触发的操作系统错误，即便在产生该错误的调用 和输出的错误信息相距甚远时，它也会非常有用，这比苍白的“不存在该文件或目录”更具说明性。
-
-错误字符串应尽可能地指明它们的来源，例如产生该错误的包名前缀。例如在 image 包中，由于未知格式导致解码错误的字符串为“image: unknown format”。
-
-若调用者关心错误的完整细节，可使用类型选择或者类型断言来查看特定错误，并抽取其细节。对于 PathErrors，它应该还包含检查内部的 Err 字段以进行可能的错误恢复。
-
-```go
-for try := 0; try < 2; try++ {
-	file, err = os.Create(filename)
-	if err == nil {
-		return
-	}
-	if e, ok := err.(*os.PathError); ok && e.Err == syscall.ENOSPC {
-		deleteTempFiles()  // 恢复一些空间。
-		continue
-	}
-	return
-}
-```
-
-这里的第二条 if 是另一种类型断言。若它失败， ok 将为 false，而 e 则为 nil. 若它成功，ok 将为 true，这意味着该错误属于 `*os.PathError` 类型，而 e 能够检测关于该错误的更多信息。
-
-预先定义好的错误，例如 os 包中预先定义好一系列错误，并且设置为导出变量，使用放可以通过导出变量来判读到底发生了何种类型的错误。
-
-```go
-// Portable analogs of some common system call errors.
-var (
-	ErrInvalid    = errors.New("invalid argument") // methods on File will return this error when the receiver is nil
-	ErrPermission = errors.New("permission denied")
-	ErrExist      = errors.New("file already exists")
-	ErrNotExist   = errors.New("file does not exist")
-	ErrClosed     = errors.New("file already closed")
-	ErrNoDeadline = poll.ErrNoDeadline
-)
 ```
 
 # 获取错误的上下文
@@ -103,7 +46,7 @@ if _, err := html.Parse(resp.Body); err != nil {
 
 为了记录这种错误类型在包装的变迁过程中的信息，我们一般会定义一个辅助的 WrapError 函数，用于包装原始的错误，同时保留完整的原始错误类型。为了问题定位的方便，同时也为了能记录错误发生时的函数调用状态，我们很多时候希望在出现致命错误的时候保存完整的函数调用信息。同时，为了支持 RPC 等跨网络的传输，我们可能要需要将错误序列化为类似 JSON 格式的数据，然后再从这些数据中将错误解码恢出来。
 
-```
+```go
 type Error interface {
 	Caller() []CallerInfo
 	Wraped() []error
@@ -122,7 +65,7 @@ type CallerInfo struct {
 
 其中`Error`为接口类型，是`error`接口类型的扩展，用于给错误增加调用栈信息，同时支持错误的多级嵌套包装，支持错误码格式。为了使用方便，我们可以定义以下的辅助函数：
 
-```
+```go
 func New(msg string) error
 func NewWithCode(code int, msg string) error
 
@@ -185,7 +128,7 @@ for i, x := range err.(errors.Error).Caller() {
 }
 ```
 
-如果需要将错误通过网络传输，可以用`errors.ToJson(err)`编码为 JSON 字符串：
+如果需要将错误通过网络传输，可以用 `errors.ToJson(err)` 编码为 JSON 字符串：
 
 ```go
 // 以JSON字符串方式发送错误
@@ -203,7 +146,7 @@ func recvError(ch <-chan string) error {
 }
 ```
 
-对于基于 http 协议的网络服务，我们还可以给错误绑定一个对应的 http 状态码：
+对于基于 HTTP 协议的网络服务，我们还可以给错误绑定一个对应的 HTTP 状态码：
 
 ```go
 err := errors.NewWithCode(404, "http error code")
@@ -224,3 +167,48 @@ if err != nil {
 ```
 
 Go 语言中大部分函数的代码结构几乎相同，首先是一系列的初始检查，用于防止错误发生，之后是函数的实际逻辑。
+
+# 延时处理
+
+让我们演示一个文件复制的例子：函数需要打开两个文件，然后将其中一个文件的内容复制到另一个文件：
+
+```go
+func CopyFile(dstName, srcName string) (written int64, err error) {
+	src, err := os.Open(srcName)
+	if err != nil {
+		return
+	}
+
+	dst, err := os.Create(dstName)
+	if err != nil {
+		return
+	}
+
+	written, err = io.Copy(dst, src)
+	dst.Close()
+	src.Close()
+	return
+}
+```
+
+上面的代码虽然能够工作，但是隐藏一个 bug。如果第一个`os.Open`调用成功，但是第二个`os.Create`调用失败，那么会在没有释放`src`文件资源的情况下返回。虽然我们可以通过在第二个返回语句前添加`src.Close()`调用来修复这个 BUG；但是当代码变得复杂时，类似的问题将很难被发现和修复。我们可以通过`defer`语句来确保每个被正常打开的文件都能被正常关闭：
+
+```go
+func CopyFile(dstName, srcName string) (written int64, err error) {
+	src, err := os.Open(srcName)
+	if err != nil {
+		return
+	}
+	defer src.Close()
+
+	dst, err := os.Create(dstName)
+	if err != nil {
+		return
+	}
+	defer dst.Close()
+
+	return io.Copy(dst, src)
+}
+```
+
+defer 语句可以让我们在打开文件时马上思考如何关闭文件。不管函数如何返回，文件关闭语句始终会被执行。同时 defer 语句可以保证，即使 io.Copy 发生了异常，文件依然可以安全地关闭。

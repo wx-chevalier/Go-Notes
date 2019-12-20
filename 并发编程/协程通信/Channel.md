@@ -86,7 +86,7 @@ func Serve(queue chan *Request) {
 }
 ```
 
-对于带缓冲的 Channel，对于 Channel 的第 K 个接收完成操作发生在第 K+C 个发送操作完成之前，其中 C 是 Channel 的缓存大小。 如果将 C 设置为 0 自然就对应无缓存的 Channel，也即使第 K 个接收完成在第 K 个发送完成之前。因为无缓存的 Channel 只能同步发 1 个，也就简化为前面无缓存 Channel 的规则：对于从无缓冲 Channel 进行的接收，发生在对该 Channel 进行的发送完成之前。我们可以根据控制 Channel 的缓存大小来控制并发执行的 Goroutine 的最大数目, 例如：
+对于带缓冲的 Channel，对于 Channel 的第 K 个接收完成操作发生在第 K+C 个发送操作完成之前，其中 C 是 Channel 的缓存大小。如果将 C 设置为 0 自然就对应无缓存的 Channel，也即使第 K 个接收完成在第 K 个发送完成之前。因为无缓存的 Channel 只能同步发 1 个，也就简化为前面无缓存 Channel 的规则：对于从无缓冲 Channel 进行的接收，发生在对该 Channel 进行的发送完成之前。我们可以根据控制 Channel 的缓存大小来控制并发执行的 Goroutine 的最大数目, 例如：
 
 ```go
 var limit = make(chan int, 3)

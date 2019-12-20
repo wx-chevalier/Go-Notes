@@ -15,7 +15,7 @@ type MapWithLock struct {
 
 # 内部优化
 
-sync.Map 的实现和优化的点在于空间换时间。 通过冗余的两个数据结构(read、dirty),实现加锁对性能的影响。使用只读数据(read)，避免读写冲突。动态调整，miss 次数多了之后，将 dirty 数据提升为 read。double-checking。 延迟删除。 删除一个键值只是打标记，只有在提升 dirty 的时候才清理删除的数据。 优先从 read 读取、更新、删除，因为对 read 的读取不需要锁。
+sync.Map 的实现和优化的点在于空间换时间。通过冗余的两个数据结构(read、dirty),实现加锁对性能的影响。使用只读数据(read)，避免读写冲突。动态调整，miss 次数多了之后，将 dirty 数据提升为 read。double-checking。延迟删除。删除一个键值只是打标记，只有在提升 dirty 的时候才清理删除的数据。优先从 read 读取、更新、删除，因为对 read 的读取不需要锁。
 
 ```go
 type Map struct {
@@ -53,7 +53,7 @@ p 通常有三种类型的值:
 
 - 其它： entry 是一个正常的值
 
-它使用了冗余的数据结构 read、dirty。dirty 中会包含 read 中为删除的 entries，新增加的 entries 会加入到 dirty 中。 read 的数据结构是：
+它使用了冗余的数据结构 read、dirty。dirty 中会包含 read 中为删除的 entries，新增加的 entries 会加入到 dirty 中。read 的数据结构是：
 
 ```go
 type readOnly struct {
@@ -103,7 +103,7 @@ if !ok && read.amended {
         m.mu.Lock()
 ```
 
-当第一句执行的时候条件满足，但是在加锁之前，m.dirty 可能被提升为 m.read,所以加锁后还得再检查 m.read，后续的方法中都使用了这个方法。如果我们查询的键值正好存在于 m.read 中，无须加锁，直接返回，理论上性能优异。即使不存在于 m.read 中，经过 miss 几次之后，m.dirty 会被提升为 m.read，又会从 m.read 中查找。所以对于更新／增加较少，加载存在的 key 很多的 case,性能基本和无锁的 map 类似。 接着我们看下如何 m.dirty 是如何被提升的。 missLocked 方法中可能会将 m.dirty 提升。
+当第一句执行的时候条件满足，但是在加锁之前，m.dirty 可能被提升为 m.read,所以加锁后还得再检查 m.read，后续的方法中都使用了这个方法。如果我们查询的键值正好存在于 m.read 中，无须加锁，直接返回，理论上性能优异。即使不存在于 m.read 中，经过 miss 几次之后，m.dirty 会被提升为 m.read，又会从 m.read 中查找。所以对于更新／增加较少，加载存在的 key 很多的 case,性能基本和无锁的 map 类似。接着我们看下如何 m.dirty 是如何被提升的。missLocked 方法中可能会将 m.dirty 提升。
 
 ```go
 func (m *Map) missLocked() {

@@ -28,11 +28,11 @@ type Map struct {
 
     // dirty数据包含当前的map包含的entries,它包含最新的entries(包括read中未删除的数据,虽有冗余，但是提升dirty字段为read的时候非常快，不用一个一个的复制，而是直接将这个数据结构作为read字段的一部分),有些数据还可能没有移动到read字段中。
     // 对于dirty的操作需要加锁，因为对它的操作可能会有读写竞争。
-    // 当dirty为空的时候， 比如初始化或者刚提升完，下一次的写操作会复制read字段中未删除的数据到这个数据中。
+    // 当dirty为空的时候，比如初始化或者刚提升完，下一次的写操作会复制read字段中未删除的数据到这个数据中。
     dirty map[interface{}]*entry
 
     // 当从Map中读取entry的时候，如果read中不包含这个entry,会尝试从dirty中读取，这个时候会将misses加一，
-    // 当misses累积到 dirty的长度的时候， 就会将dirty提升为read,避免从dirty中miss太多次。因为操作dirty需要加锁。
+    // 当misses累积到 dirty的长度的时候，就会将dirty提升为read,避免从dirty中miss太多次。因为操作dirty需要加锁。
     misses int
 }
 ```
@@ -117,7 +117,7 @@ func (m *Map) missLocked() {
 }
 ```
 
-上面的最后三行代码就是提升 m.dirty 的，很简单的将 m.dirty 作为 readOnly 的 m 字段，原子更新 m.read。提升后 m.dirty、m.misses 重置， 并且 m.read.amended 为 false。
+上面的最后三行代码就是提升 m.dirty 的，很简单的将 m.dirty 作为 readOnly 的 m 字段，原子更新 m.read。提升后 m.dirty、m.misses 重置，并且 m.read.amended 为 false。
 
 ## Store
 
@@ -200,7 +200,7 @@ func (m *Map) Delete(key interface{}) {
 }
 ```
 
-这里的删除操作还是从 m.read 中开始， 如果这个 entry 不存在于 m.read 中，并且 m.dirty 中有新数据，则加锁尝试从 m.dirty 中删除。此外需要双检查的，从 m.dirty 中直接删除即可，就当它没存在过，但是如果是从 m.read 中删除，并不会直接删除，而是打标记：
+这里的删除操作还是从 m.read 中开始，如果这个 entry 不存在于 m.read 中，并且 m.dirty 中有新数据，则加锁尝试从 m.dirty 中删除。此外需要双检查的，从 m.dirty 中直接删除即可，就当它没存在过，但是如果是从 m.read 中删除，并不会直接删除，而是打标记：
 
 ```go
 func (e *entry) delete() (hadValue bool) {

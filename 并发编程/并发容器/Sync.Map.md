@@ -51,7 +51,7 @@ p 通常有三种类型的值:
 
 - expunged: entry 已被删除了，并且 m.dirty 不为 nil，而且这个 entry 不存在于 m.dirty 中
 
-- 其它： entry 是一个正常的值
+- 其它：entry 是一个正常的值
 
 它使用了冗余的数据结构 read、dirty。dirty 中会包含 read 中为删除的 entries，新增加的 entries 会加入到 dirty 中。read 的数据结构是：
 

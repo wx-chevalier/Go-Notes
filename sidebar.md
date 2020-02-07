@@ -78,7 +78,7 @@
     - [常用标准库](/语法基础/常用标准库/README.md)
       - [strings](/语法基础/常用标准库/strings.md)
     - 序列化
-      - [Json](/语法基础/序列化/Json.md)
+      - [JSON](/语法基础/序列化/JSON.md)
       - [Xml](/语法基础/序列化/Xml.md)
       - [gRPC](/语法基础/序列化/gRPC.md)
     - [开发环境](/语法基础/开发环境/README.md)

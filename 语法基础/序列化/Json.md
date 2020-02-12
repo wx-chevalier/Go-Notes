@@ -111,7 +111,7 @@ jsonparser.EachKey(data, func(idx int, value []byte, vt jsonparser.ValueType, er
 
 # json-iterator
 
-json-iterator 是滴滴出品的，号称全世界最快的 JSON 解析器。它最多能比普通的解析器快 10 倍之多，即使在数据绑定的用法下也有同样的性能优势。非常易于使用的 api，允许你使用任何风格或者混搭的方式来解析 JSON 。给你前所未有的灵活性。
+json-iterator 是滴滴出品的，号称全世界最快的 JSON 解析器。它最多能比普通的解析器快 10 倍之多，即使在数据绑定的用法下也有同样的性能优势。非常易于使用的 api，允许你使用任何风格或者混搭的方式来解析 JSON。给你前所未有的灵活性。
 
 ![JSON 解析性能比较](https://s2.ax1x.com/2019/12/02/QnMBd0.png)
 

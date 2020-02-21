@@ -39,3 +39,16 @@ sayHello := func() {
 go sayHello()
 // continue doing other things
 ```
+
+# Go Concurrency Patterns
+
+我们可以通过 go myfunc() 轻易的创建一个和当前协程并发执行的 task。但是，当程序变复杂， go statement 变的越来越多时，就会遇到各种 task 生命周期的问题。
+
+- 这个任务什么时候开始，什么时候结束？
+- 怎么做到当所有子任务都结束，主任务再结束？
+- 假如某个子任务失败，主任务如何终止掉其他子任务？
+- 如何保证所有子任务在某个特定的超时时间内返回，无论它成功还是失败？
+- 更进一步，如何保证主任务在规定的时间内返回，无论其成功还是失败，同时终止掉它产生的所有子任务？
+- 主任务已经结束了，子任务还在运行，是不是存在资源泄漏？
+
+当然这些问题在 Golang 里面都是可以解的，具体可以参考 Golang Official Blog 里几篇讲 Golang Concurrency Patterns 的文章。它需要程序按照一些特定的行为方式去组织，比如说方法参数带上 Context，通过它去传递 cancellation 信号。

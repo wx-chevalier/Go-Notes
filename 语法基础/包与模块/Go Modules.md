@@ -90,3 +90,9 @@ import github.com/myname/myproject/stuff
 ![Go Modules 缓存路径](https://s1.ax1x.com/2019/11/19/M2IIhD.png)
 
 Go 的模块版本号必须以 v 开头，在发布版本时可以通过 Tag 方式来指定不同的版本。我们可以使用 `go list -m all` 来查看全部的依赖，使用 `go mod tidy` 来移除未被使用的依赖，使用 `go mod vendor` 可以生成独立的 vendor 目录。
+
+# 模块代理
+
+# Todos
+
+- https://mp.weixin.qq.com/s/Sxv5qb-v6OIhPptLWAHYUw Go Module来了，企业私有代理你准备好了吗？

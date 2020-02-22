@@ -42,7 +42,7 @@ go sayHello()
 
 # Go Concurrency Patterns
 
-我们可以通过 go myfunc() 轻易的创建一个和当前协程并发执行的 task。但是，当程序变复杂， go statement 变的越来越多时，就会遇到各种 task 生命周期的问题。
+我们可以通过 go myfunc() 轻易的创建一个和当前协程并发执行的 task。但是，当程序变复杂，go statement 变的越来越多时，就会遇到各种 task 生命周期的问题。
 
 - 这个任务什么时候开始，什么时候结束？
 - 怎么做到当所有子任务都结束，主任务再结束？

@@ -5,6 +5,427 @@
       - [请求处理](/Web%20开发/HTTP%20处理/请求处理.md)
     - [grpc](/Web%20开发/grpc/README.md)
       
+  - [algorithms](/algorithms/README.md)
+    - array
+      - [duplicates](/algorithms/array/duplicates/README.md)
+        
+      - [groupanagrams](/algorithms/array/groupanagrams/README.md)
+        
+      - [minmeetingrooms](/algorithms/array/minmeetingrooms/README.md)
+        
+      - rotations
+        - [countrotations](/algorithms/array/rotations/countrotations/README.md)
+          
+        - [minrotations](/algorithms/array/rotations/minrotations/README.md)
+          
+      - streams
+        - [movingaverages](/algorithms/array/streams/movingaverages/README.md)
+          
+        - [runningaverages](/algorithms/array/streams/runningaverages/README.md)
+          
+        - [runningmedians](/algorithms/array/streams/runningmedians/README.md)
+          
+    - list
+      - [detectcycles](/algorithms/list/detectcycles/README.md)
+        
+      - [detectintersections](/algorithms/list/detectintersections/README.md)
+        
+      - linkedlist
+        - [doublelinkedlists](/algorithms/list/linkedlist/doublelinkedlists/README.md)
+          
+        - [singlelinkedlists](/algorithms/list/linkedlist/singlelinkedlists/README.md)
+          
+      - [reverses](/algorithms/list/reverses/README.md)
+        
+    - map
+      - [hashmap](/algorithms/map/hashmap/README.md)
+        
+      - [hashmultimaps](/algorithms/map/hashmultimaps/README.md)
+        
+      - [lrucaches](/algorithms/map/lrucaches/README.md)
+        
+    - number_theory
+      - [armstrongs](/algorithms/number_theory/armstrongs/README.md)
+        
+      - [bases](/algorithms/number_theory/bases/README.md)
+        
+      - [countdigits](/algorithms/number_theory/countdigits/README.md)
+        
+      - [excels](/algorithms/number_theory/excels/README.md)
+        
+      - [fibonaccis](/algorithms/number_theory/fibonaccis/README.md)
+        
+      - [leapyears](/algorithms/number_theory/leapyears/README.md)
+        
+      - [palindromes](/algorithms/number_theory/palindromes/README.md)
+        
+      - [perfects](/algorithms/number_theory/perfects/README.md)
+        
+      - [postfixes](/algorithms/number_theory/postfixes/README.md)
+        
+      - [powers](/algorithms/number_theory/powers/README.md)
+        
+      - [primes](/algorithms/number_theory/primes/README.md)
+        
+      - [repeatingfractions](/algorithms/number_theory/repeatingfractions/README.md)
+        
+      - [reverses](/algorithms/number_theory/reverses/README.md)
+        
+    - queue
+      - [priorityqueues](/algorithms/queue/priorityqueues/README.md)
+        
+      - [simple_queue](/algorithms/queue/simple_queue/README.md)
+        
+    - scheduler
+      - [minitask](/algorithms/scheduler/minitask/README.md)
+        
+    - set
+      - [hashmultisets](/algorithms/set/hashmultisets/README.md)
+        
+      - [hashsets](/algorithms/set/hashsets/README.md)
+        
+    - stack
+      - [balancedparantheses](/algorithms/stack/balancedparantheses/README.md)
+        
+      - [linkedliststacks](/algorithms/stack/linkedliststacks/README.md)
+        
+      - [minmaxstacks](/algorithms/stack/minmaxstacks/README.md)
+        
+      - [slicestacks](/algorithms/stack/slicestacks/README.md)
+        
+    - string
+      - [addbinaries](/algorithms/string/addbinaries/README.md)
+        
+      - palindromes
+        - [palindromesentences](/algorithms/string/palindromes/palindromesentences/README.md)
+          
+        - [palindromestrings](/algorithms/string/palindromes/palindromestrings/README.md)
+          
+      - reverses
+        - [reversesentences](/algorithms/string/reverses/reversesentences/README.md)
+          
+        - [reversestrings](/algorithms/string/reverses/reversestrings/README.md)
+          
+      - [sorts](/algorithms/string/sorts/README.md)
+        
+      - [wordbreakers](/algorithms/string/wordbreakers/README.md)
+        
+    - tree
+      - balancedtrees
+        - [balancedbinarytrees](/algorithms/tree/balancedtrees/balancedbinarytrees/README.md)
+          
+        - [balancedmultitrees](/algorithms/tree/balancedtrees/balancedmultitrees/README.md)
+          
+      - heights
+        - [binarytreeheights](/algorithms/tree/heights/binarytreeheights/README.md)
+          
+        - [multitreeheights](/algorithms/tree/heights/multitreeheights/README.md)
+          
+      - inverttrees
+        - [invertbinarytrees](/algorithms/tree/inverttrees/invertbinarytrees/README.md)
+          
+        - [invertmultitrees](/algorithms/tree/inverttrees/invertmultitrees/README.md)
+          
+      - [longestdistinctpaths](/algorithms/tree/longestdistinctpaths/README.md)
+        
+      - [printcolumns](/algorithms/tree/printcolumns/README.md)
+        
+      - [printlevels](/algorithms/tree/printlevels/README.md)
+        
+  - [examples](/examples/README.md)
+    - basic
+      - [local interfaces](/examples/basic/local-interfaces/README.md)
+        
+    - [gloc](/examples/gloc/README.md)
+      
+    - [go agent](/examples/go-agent/README.md)
+      
+    - [go boot](/examples/go-boot/README.md)
+      
+    - [go clean architecture](/examples/go-clean-architecture/README.md)
+      
+    - [learngo exercises](/examples/learngo-exercises/README.md)
+      - [get started](/examples/learngo-exercises/01-get-started/README.md)
+        - [osx installation](/examples/learngo-exercises/01-get-started/osx-installation.md)
+        - [ubuntu installation](/examples/learngo-exercises/01-get-started/ubuntu-installation.md)
+        - [windows installation](/examples/learngo-exercises/01-get-started/windows-installation.md)
+      - [write your first program](/examples/learngo-exercises/02-write-your-first-program/README.md)
+        - [annotated go program example](/examples/learngo-exercises/02-write-your-first-program/annotated-go-program-example.md)
+        - [exercises](/examples/learngo-exercises/02-write-your-first-program/exercises/README.md)
+          - print gopath
+            - [exercise](/examples/learngo-exercises/02-write-your-first-program/exercises/02-print-gopath/exercise.md)
+            - solution
+              - [solution](/examples/learngo-exercises/02-write-your-first-program/exercises/02-print-gopath/solution/solution.md)
+        - questions
+          - [gopath](/examples/learngo-exercises/02-write-your-first-program/questions/01-gopath/README.md)
+            
+          - [code your first program](/examples/learngo-exercises/02-write-your-first-program/questions/02-code-your-first-program/README.md)
+            
+          - [run your first program](/examples/learngo-exercises/02-write-your-first-program/questions/03-run-your-first-program/README.md)
+            
+      - packages and scopes
+        - [exercises](/examples/learngo-exercises/03-packages-and-scopes/exercises/README.md)
+          
+        - questions
+          - [packages A](/examples/learngo-exercises/03-packages-and-scopes/questions/01-packages-A/README.md)
+            
+          - [packages B](/examples/learngo-exercises/03-packages-and-scopes/questions/02-packages-B/README.md)
+            
+          - [scopes](/examples/learngo-exercises/03-packages-and-scopes/questions/03-scopes/README.md)
+            
+      - statements expressions comments
+        - [exercises](/examples/learngo-exercises/04-statements-expressions-comments/exercises/README.md)
+          - use godoc
+            - [exercise](/examples/learngo-exercises/04-statements-expressions-comments/exercises/06-use-godoc/exercise.md)
+            - solution
+              - [solution](/examples/learngo-exercises/04-statements-expressions-comments/exercises/06-use-godoc/solution/solution.md)
+        - questions
+          - [statements](/examples/learngo-exercises/04-statements-expressions-comments/questions/01-statements/README.md)
+            
+          - [expressions](/examples/learngo-exercises/04-statements-expressions-comments/questions/02-expressions/README.md)
+            
+          - [comments](/examples/learngo-exercises/04-statements-expressions-comments/questions/03-comments/README.md)
+            
+      - write your first library package
+        - [exercise](/examples/learngo-exercises/05-write-your-first-library-package/exercise/README.md)
+          
+        - [questions](/examples/learngo-exercises/05-write-your-first-library-package/questions/README.md)
+          
+      - variables
+        - basic data types
+          - [exercises](/examples/learngo-exercises/06-variables/01-basic-data-types/exercises/README.md)
+            
+          - [questions](/examples/learngo-exercises/06-variables/01-basic-data-types/questions/README.md)
+            
+        - declarations
+          - [exercises](/examples/learngo-exercises/06-variables/02-declarations/exercises/README.md)
+            
+          - questions
+            - [what](/examples/learngo-exercises/06-variables/02-declarations/questions/01-what/README.md)
+              
+            - [declaration](/examples/learngo-exercises/06-variables/02-declarations/questions/02-declaration/README.md)
+              
+            - [unused variables](/examples/learngo-exercises/06-variables/02-declarations/questions/03-unused-variables/README.md)
+              
+            - [zero values](/examples/learngo-exercises/06-variables/02-declarations/questions/04-zero-values/README.md)
+              
+        - short declaration
+          - [exercises](/examples/learngo-exercises/06-variables/03-short-declaration/exercises/README.md)
+            
+          - [questions](/examples/learngo-exercises/06-variables/03-short-declaration/questions/README.md)
+            
+        - assignment
+          - [exercises](/examples/learngo-exercises/06-variables/04-assignment/exercises/README.md)
+            
+          - [questions](/examples/learngo-exercises/06-variables/04-assignment/questions/README.md)
+            
+        - type conversion
+          - [exercises](/examples/learngo-exercises/06-variables/05-type-conversion/exercises/README.md)
+            
+          - questions
+            - [questions](/examples/learngo-exercises/06-variables/05-type-conversion/questions/questions.md)
+        - project greeter
+          - [exercises](/examples/learngo-exercises/06-variables/06-project-greeter/exercises/README.md)
+            
+          - questions
+            - [questions](/examples/learngo-exercises/06-variables/06-project-greeter/questions/questions.md)
+      - printf
+        - [exercises](/examples/learngo-exercises/07-printf/exercises/README.md)
+          
+        - questions
+          - [questions](/examples/learngo-exercises/07-printf/questions/questions.md)
+      - numbers and strings
+        - numbers
+          - [exercises](/examples/learngo-exercises/08-numbers-and-strings/01-numbers/exercises/README.md)
+            
+          - questions
+            - [arithmetic operators](/examples/learngo-exercises/08-numbers-and-strings/01-numbers/questions/01-arithmetic-operators.md)
+            - [precedence](/examples/learngo-exercises/08-numbers-and-strings/01-numbers/questions/02-precedence.md)
+            - [assignment operations](/examples/learngo-exercises/08-numbers-and-strings/01-numbers/questions/03-assignment-operations.md)
+        - [strings](/examples/learngo-exercises/08-numbers-and-strings/02-strings/README.md)
+          - questions
+            - [questions](/examples/learngo-exercises/08-numbers-and-strings/02-strings/questions/questions.md)
+      - go type system
+        - [exercises](/examples/learngo-exercises/09-go-type-system/exercises/README.md)
+          
+        - questions
+          - [questions predeclared types](/examples/learngo-exercises/09-go-type-system/questions/01-questions-predeclared-types.md)
+          - [questions defined types](/examples/learngo-exercises/09-go-type-system/questions/02-questions-defined-types.md)
+      - constants
+        - [exercises](/examples/learngo-exercises/10-constants/exercises/README.md)
+          
+        - questions
+          - [questions](/examples/learngo-exercises/10-constants/questions/questions.md)
+      - if
+        - [exercises](/examples/learngo-exercises/11-if/exercises/README.md)
+          
+        - questions
+          - [comparison operators](/examples/learngo-exercises/11-if/questions/1-comparison-operators.md)
+          - [logical operators](/examples/learngo-exercises/11-if/questions/2-logical-operators.md)
+          - [if](/examples/learngo-exercises/11-if/questions/3-if.md)
+          - [error handling](/examples/learngo-exercises/11-if/questions/4-error-handling.md)
+          - [short if](/examples/learngo-exercises/11-if/questions/5-short-if.md)
+      - switch
+        - [exercises](/examples/learngo-exercises/12-switch/exercises/README.md)
+          
+        - questions
+          - [questions](/examples/learngo-exercises/12-switch/questions/questions.md)
+      - loops
+        - [exercises](/examples/learngo-exercises/13-loops/exercises/README.md)
+          - [basics](/examples/learngo-exercises/13-loops/exercises/01-basics.md)
+          - [multiplication table](/examples/learngo-exercises/13-loops/exercises/02-multiplication-table.md)
+          - [lucky number](/examples/learngo-exercises/13-loops/exercises/03-lucky-number.md)
+          - [word finder](/examples/learngo-exercises/13-loops/exercises/04-word-finder.md)
+          - [crunch the primes](/examples/learngo-exercises/13-loops/exercises/05-crunch-the-primes.md)
+        - questions
+          - [loops](/examples/learngo-exercises/13-loops/questions/01-loops.md)
+          - [randomization](/examples/learngo-exercises/13-loops/questions/02-randomization.md)
+          - [labeled statements](/examples/learngo-exercises/13-loops/questions/03-labeled-statements.md)
+      - arrays
+        - [exercises](/examples/learngo-exercises/14-arrays/exercises/README.md)
+          
+        - [questions](/examples/learngo-exercises/14-arrays/questions/README.md)
+          - [array basics](/examples/learngo-exercises/14-arrays/questions/1-array-basics.md)
+          - [arrays](/examples/learngo-exercises/14-arrays/questions/2-arrays.md)
+      - [project retro led clock](/examples/learngo-exercises/15-project-retro-led-clock/README.md)
+        - [printing the digits](/examples/learngo-exercises/15-project-retro-led-clock/01-printing-the-digits/README.md)
+          
+        - [printing the clock](/examples/learngo-exercises/15-project-retro-led-clock/02-printing-the-clock/README.md)
+          
+        - [animating the clock](/examples/learngo-exercises/15-project-retro-led-clock/03-animating-the-clock/README.md)
+          
+        - [blinking the separators](/examples/learngo-exercises/15-project-retro-led-clock/04-blinking-the-separators/README.md)
+          
+        - [exercises](/examples/learngo-exercises/15-project-retro-led-clock/exercises/README.md)
+          
+      - [slices](/examples/learngo-exercises/16-slices/README.md)
+        - [exercises](/examples/learngo-exercises/16-slices/exercises/README.md)
+          - correct the lyric
+            - [hints](/examples/learngo-exercises/16-slices/exercises/21-correct-the-lyric/hints.md)
+          - fix the memory leak
+            - [hints](/examples/learngo-exercises/16-slices/exercises/24-fix-the-memory-leak/hints.md)
+        - [questions](/examples/learngo-exercises/16-slices/questions/README.md)
+          - [slices vs arrays](/examples/learngo-exercises/16-slices/questions/1-slices-vs-arrays.md)
+          - [appending](/examples/learngo-exercises/16-slices/questions/2-appending.md)
+          - [slicing](/examples/learngo-exercises/16-slices/questions/3-slicing.md)
+          - [backing array](/examples/learngo-exercises/16-slices/questions/4-backing-array.md)
+          - [slice header](/examples/learngo-exercises/16-slices/questions/5-slice-header.md)
+          - [capacity](/examples/learngo-exercises/16-slices/questions/6-capacity.md)
+          - [mechanics of append](/examples/learngo-exercises/16-slices/questions/7-mechanics-of-append.md)
+          - [advanced ops](/examples/learngo-exercises/16-slices/questions/8-advanced-ops.md)
+      - project empty file finder
+        - [exercises](/examples/learngo-exercises/17-project-empty-file-finder/exercises/README.md)
+          
+      - [project bouncing ball](/examples/learngo-exercises/18-project-bouncing-ball/README.md)
+        - [exercises](/examples/learngo-exercises/18-project-bouncing-ball/exercises/README.md)
+          
+      - strings runes bytes
+        - [exercises](/examples/learngo-exercises/19-strings-runes-bytes/exercises/README.md)
+          
+        - [questions](/examples/learngo-exercises/19-strings-runes-bytes/questions/README.md)
+          
+      - [project spam masker](/examples/learngo-exercises/20-project-spam-masker/README.md)
+        
+      - [project text wrapper](/examples/learngo-exercises/21-project-text-wrapper/README.md)
+        
+      - maps
+        - [exercises](/examples/learngo-exercises/22-maps/exercises/README.md)
+          
+        - [questions](/examples/learngo-exercises/22-maps/questions/README.md)
+          
+      - input scanning
+        - [exercises](/examples/learngo-exercises/23-input-scanning/exercises/README.md)
+          
+        - [questions](/examples/learngo-exercises/23-input-scanning/questions/README.md)
+          
+      - structs
+        - [exercises](/examples/learngo-exercises/24-structs/exercises/README.md)
+          
+        - [questions](/examples/learngo-exercises/24-structs/questions/README.md)
+          
+      - functions
+        - [exercises](/examples/learngo-exercises/25-functions/exercises/README.md)
+          
+        - [questions](/examples/learngo-exercises/25-functions/questions/README.md)
+          
+      - pointers
+        - [exercises](/examples/learngo-exercises/26-pointers/exercises/README.md)
+          
+        - [questions](/examples/learngo-exercises/26-pointers/questions/README.md)
+          
+      - advfuncs
+        - [exercises](/examples/learngo-exercises/advfuncs/exercises/README.md)
+          
+      - etc
+        - [FIX](/examples/learngo-exercises/etc/FIX.md)
+      - [first](/examples/learngo-exercises/first/README.md)
+        - first
+          - exercises
+            - 
+              - [exercise](/examples/learngo-exercises/first/first/exercises/02/exercise.md)
+              - solution
+                - [solution](/examples/learngo-exercises/first/first/exercises/02/solution/solution.md)
+          - questions
+            - [gopath questions](/examples/learngo-exercises/first/first/questions/01-gopath-questions.md)
+            - [code your first program questions](/examples/learngo-exercises/first/first/questions/02-code-your-first-program-questions.md)
+            - [run your first program questions](/examples/learngo-exercises/first/first/questions/03-run-your-first-program-questions.md)
+      - [x tba](/examples/learngo-exercises/x-tba/README.md)
+        - project png parser
+          - png parser project
+            - [png anatomy format](/examples/learngo-exercises/x-tba/project-png-parser/png-parser-project/1-png-anatomy-format.md)
+            - [png anatomy example](/examples/learngo-exercises/x-tba/project-png-parser/png-parser-project/2-png-anatomy-example.md)
+        - [tictactoe experiments](/examples/learngo-exercises/x-tba/tictactoe-experiments/README.md)
+          - refactor
+            - [resources](/examples/learngo-exercises/x-tba/tictactoe-experiments/06-refactor/resources.md)
+    - [standards layout](/examples/standards-layout/README.md)
+      - [api](/examples/standards-layout/api/README.md)
+        
+      - [assets](/examples/standards-layout/assets/README.md)
+        
+      - [cmd](/examples/standards-layout/cmd/README.md)
+        
+      - [configs](/examples/standards-layout/configs/README.md)
+        
+      - [deployments](/examples/standards-layout/deployments/README.md)
+        
+      - [docs](/examples/standards-layout/docs/README.md)
+        
+      - [examples](/examples/standards-layout/examples/README.md)
+        
+      - [githooks](/examples/standards-layout/githooks/README.md)
+        
+      - [init](/examples/standards-layout/init/README.md)
+        
+      - [internal](/examples/standards-layout/internal/README.md)
+        
+      - [pkg](/examples/standards-layout/pkg/README.md)
+        
+      - [scripts](/examples/standards-layout/scripts/README.md)
+        
+      - [test](/examples/standards-layout/test/README.md)
+        
+      - [third_party](/examples/standards-layout/third_party/README.md)
+        
+      - [tools](/examples/standards-layout/tools/README.md)
+        
+      - [vendor](/examples/standards-layout/vendor/README.md)
+        
+      - [web](/examples/standards-layout/web/README.md)
+        
+      - [website](/examples/standards-layout/website/README.md)
+        
+    - web
+      - beego
+        - [beego shorturl](/examples/web/beego/beego-shorturl/README.md)
+          - [README_ZH](/examples/web/beego/beego-shorturl/README_ZH.md)
+        - [beego todo](/examples/web/beego/beego-todo/README.md)
+          - [README_ZH](/examples/web/beego/beego-todo/README_ZH.md)
+        - [beego web dav](/examples/web/beego/beego-web-dav/README.md)
+          
+        - [beego web im](/examples/web/beego/beego-web-im/README.md)
+          - [README_ZH](/examples/web/beego/beego-web-im/README_ZH.md)
+      - [go webserver](/examples/web/go-webserver/README.md)
+        
   - 工程实践
     - [Cgo](/工程实践/Cgo/README.md)
       

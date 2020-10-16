@@ -23,6 +23,6 @@ Go 语言很多时候被描述为“类 C 语言”，或者是“21 世纪的 C
 
 [![NGTE Books](https://s2.ax1x.com/2020/01/18/19uXtI.png)](https://ng-tech.icu/books/)
 
-## 链接
+## TBD
 
 - https://mp.weixin.qq.com/s/wE_z7MxDJjIVDN16578tDw Go 语言十年而立，Go2 蓄势待发

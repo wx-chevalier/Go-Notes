@@ -1,5 +1,5 @@
 # panic 的内部实现
 
-# 链接
+# TBD
 
 - https://draveness.me/golang-panic-recover

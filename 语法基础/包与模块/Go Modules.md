@@ -93,6 +93,6 @@ Go 的模块版本号必须以 v 开头，在发布版本时可以通过 Tag 方
 
 # 模块代理
 
-# 链接
+# TBD
 
 - https://mp.weixin.qq.com/s/Sxv5qb-v6OIhPptLWAHYUw Go Module 来了，企业私有代理你准备好了吗？

@@ -180,12 +180,12 @@ scase.c 为当前 case 语句所操作的 channel 指针，这也说明了一个
 
 - caseRecv：case 语句中尝试读取 scase.c 中的数据；
 - caseSend：case 语句中尝试向 scase.c 中写入数据；
-- caseDefault： default 语句
+- caseDefault：default 语句
 
 scase.elem 表示缓冲区地址，跟据 scase.kind 不同，有不同的用途：
 
-- scase.kind == caseRecv ： scase.elem 表示读出 channel 的数据存放地址；
-- scase.kind == caseSend ： scase.elem 表示将要写入 channel 的数据存放地址；
+- scase.kind == caseRecv ：scase.elem 表示读出 channel 的数据存放地址；
+- scase.kind == caseSend ：scase.elem 表示将要写入 channel 的数据存放地址；
 
 ## select 实现逻辑
 
@@ -205,7 +205,7 @@ func selectgo(cas0 *scase, order0 *uint16, ncases int) (int, bool)
 
 函数返回值：
 
-1. int： 选中 case 的编号，这个 case 编号跟代码一致
+1. int：选中 case 的编号，这个 case 编号跟代码一致
 2. bool: 是否成功从 channle 中读取了数据，如果选中的 case 是从 channel 中读数据，则该返回值表示是否读取成功。
 
 selectgo 实现伪代码如下：

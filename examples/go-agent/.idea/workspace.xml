@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4b695f63-4372-4742-9c83-40054d92fed5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../algorithms/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/duplicates/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/duplicates/duplicates.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/duplicates/duplicates_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/flattenarray/flatten_array.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/flattenarray/flatten_array_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/groupanagrams/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/groupanagrams/group_anagrams.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/groupanagrams/group_anagrams_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/mergearray/merge_array.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/mergearray/merge_array_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/minmeetingrooms/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/minmeetingrooms/min_meeting_rooms.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/minmeetingrooms/min_meeting_rooms_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/rotations/countrotations/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/rotations/countrotations/count_rotations.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/rotations/countrotations/count_rotations_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/rotations/minrotations/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/rotations/minrotations/min_rotations.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/rotations/minrotations/min_rotations_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/streams/movingaverages/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/streams/movingaverages/moving_averages.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/streams/movingaverages/moving_averages_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/streams/runningaverages/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/streams/runningaverages/running_averages.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/streams/runningaverages/running_averages_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/streams/runningmedians/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/streams/runningmedians/running_medians.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/array/streams/runningmedians/running_medians_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/ciphers/caesar_cipher.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/dp/longest_palindromic_subsequence.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/dp/matrix_multiplication.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/dp/rod_cutting.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/graph/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/list/detectcycles/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/list/detectcycles/detect_cycles.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/list/detectcycles/detect_cycles_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/list/detectintersections/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/list/detectintersections/detect_intersections.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/list/detectintersections/detect_intersections_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/list/linkedlist/doublelinkedlists/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/list/linkedlist/doublelinkedlists/doubly_linked_lists.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/list/linkedlist/doublelinkedlists/doubly_linked_lists_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/list/linkedlist/simple_linked_list.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/list/linkedlist/singlelinkedlists/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/list/linkedlist/singlelinkedlists/singly_linked_lists.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/list/linkedlist/singlelinkedlists/singly_linked_lists_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/list/reverses/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/list/reverses/reverses.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/list/reverses/reverses_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/map/hashmap/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/map/hashmap/hashfunc.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/map/hashmap/hashfunc_bench_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/map/hashmap/hashfunc_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/map/hashmap/hashmap.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/map/hashmap/hashmap_bench_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/map/hashmap/hashmap_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/map/hashmultimaps/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/map/hashmultimaps/hash_multi_map.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/map/hashmultimaps/hash_multi_map_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/map/lrucaches/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/map/lrucaches/lru_cache.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/map/lrucaches/lru_cache_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/map/ordermap/order-map.demo.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/map/ordermap/order-map.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/armstrongs/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/armstrongs/armstrongs.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/armstrongs/armstrongs_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/bases/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/bases/bases.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/bases/bases_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/countdigits/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/countdigits/count_digits.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/countdigits/count_digits_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/excels/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/excels/excels.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/excels/excels_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/fibonaccis/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/fibonaccis/fibonaccis.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/fibonaccis/fibonaccis_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/leapyears/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/leapyears/leap_years.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/leapyears/leap_years_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/palindromes/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/palindromes/palindromes.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/palindromes/palindromes_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/perfects/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/perfects/perfects.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/perfects/perfects_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/postfixes/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/postfixes/postfixes.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/postfixes/postfixes_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/powers/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/powers/powers.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/powers/powers_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/primes/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/primes/primes.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/primes/primes_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/repeatingfractions/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/repeatingfractions/repeating_fractions.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/repeatingfractions/repeating_fractions_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/reverses/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/reverses/reverses.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/number_theory/reverses/reverses_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/optimization/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/other/NestedBrackets.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/other/PasswordGenerator.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/other/PrimeNumbers.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/other/prime_numbers.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/other/string_combinations.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/queue/priorityqueues/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/queue/priorityqueues/heap.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/queue/priorityqueues/priority_queues.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/queue/priorityqueues/priority_queues_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/queue/simple_queue/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/queue/simple_queue/queues.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/queue/simple_queue/queues_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/scheduler/minitask/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/scheduler/minitask/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/scheduler/minitask/compile.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/scheduler/minitask/input/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/scheduler/minitask/output/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/scheduler/minitask/src/bootstrap.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/scheduler/minitask/src/commandrunner/commandrunner.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/scheduler/minitask/src/common/io.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/scheduler/minitask/src/executer/executer.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/scheduler/minitask/src/httpbuilder/httpbuilder.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/scheduler/minitask/src/logger/logger.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/scheduler/minitask/src/url/url.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/search/binary_search.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/search/linear_search.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/set/hashmultisets/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/set/hashmultisets/hash_multi_set.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/set/hashmultisets/hash_multi_set_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/set/hashsets/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/set/hashsets/hash_set.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/set/hashsets/hash_set_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/sort/Heapsort.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/sort/InsertionSort.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/sort/SelectionSort.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/sort/TopologicalSort.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/sort/bubble_sort.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/sort/insertion_sort.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/sort/merge_sort.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/sort/quick-sort.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/sort/quick-sort_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/sort/quick_sort.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/sort/selection_sort.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/sort/shell_sort.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/stack/balancedparantheses/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/stack/balancedparantheses/balanced_parantheses.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/stack/balancedparantheses/balanced_parantheses_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/stack/linkedliststacks/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/stack/linkedliststacks/linked_list_stacks.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/stack/linkedliststacks/linked_list_stacks_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/stack/minmaxstacks/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/stack/minmaxstacks/min_max_stacks.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/stack/minmaxstacks/min_max_stacks_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/stack/slicestacks/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/stack/slicestacks/slice_stacks.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/stack/slicestacks/slice_stacks_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/addbinaries/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/addbinaries/add_binaries.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/addbinaries/add_binaries_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/bytestrings/buffer.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/bytestrings/buffer_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/bytestrings/bytes.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/bytestrings/bytes_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/bytestrings/example/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/bytestrings/string.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/bytestrings/string_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/encoding/base64.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/encoding/base64_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/encoding/example/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/encoding/gob.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/encoding/gob_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/globmatch/glob_match.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/globmatch/glob_match_test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/palindromes/palindromesentences/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/palindromes/palindromesentences/palindrome_sentences.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/palindromes/palindromesentences/palindrome_sentences_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/palindromes/palindromestrings/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/palindromes/palindromestrings/palindrome_strings.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/palindromes/palindromestrings/palindrome_strings_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/reverses/reversesentences/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/reverses/reversesentences/reverse_sentences.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/reverses/reversesentences/reverse_sentences_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/reverses/reversestrings/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/reverses/reversestrings/reverse_strings.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/reverses/reversestrings/reverse_strings_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/sorts/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/sorts/sorts.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/sorts/sorts_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/wordbreakers/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/wordbreakers/word_breaker.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/string/wordbreakers/word_breaker_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/table/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/balancedtrees/balancedbinarytrees/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/balancedtrees/balancedbinarytrees/balanced_binary_trees.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/balancedtrees/balancedbinarytrees/balanced_binary_trees_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/balancedtrees/balancedmultitrees/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/balancedtrees/balancedmultitrees/balanced_multi_trees.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/balancedtrees/balancedmultitrees/balanced_multi_trees_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/binarytree/binary-search-tree.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/binarytree/binary_tree.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/heights/binarytreeheights/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/heights/binarytreeheights/binary_tree_heights.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/heights/binarytreeheights/binary_tree_heights_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/heights/multitreeheights/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/heights/multitreeheights/multi_tree_heights.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/heights/multitreeheights/multi_tree_heights_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/inverttrees/invertbinarytrees/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/inverttrees/invertbinarytrees/invert_binary_trees.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/inverttrees/invertbinarytrees/invert_binary_trees_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/inverttrees/invertmultitrees/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/inverttrees/invertmultitrees/invert_multi_trees.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/inverttrees/invertmultitrees/invert_multi_trees_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/longestdistinctpaths/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/longestdistinctpaths/longest_distinct_paths.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/longestdistinctpaths/longest_distinct_paths_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/printcolumns/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/printcolumns/print_columns.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/printcolumns/print_columns_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/printlevels/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/printlevels/print_levels.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/printlevels/print_levels_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/trees.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/trie/trie.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../algorithms/tree/trie/trie_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-minimal/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-shorturl/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-shorturl/README_ZH.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-shorturl/conf/app.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-shorturl/controllers/default.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-shorturl/controllers/expand.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-shorturl/controllers/short.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-shorturl/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-shorturl/models/model.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-shorturl/tests/default_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-todo/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-todo/README_ZH.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-todo/conf/app.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-todo/controllers/default.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-todo/controllers/task.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-todo/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-todo/models/task.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-todo/models/task_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-todo/static/css/todo.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-todo/static/img/spinner.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-todo/static/js/angular.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-todo/static/js/todo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-todo/views/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-dav/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-dav/WebDAV.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-dav/_testdata/test.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-dav/conf/app.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-dav/controllers/controllers.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/README_ZH.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/WebIM.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/bee.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/conf/app.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/conf/locale_en-US.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/conf/locale_zh-CN.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/controllers/app.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/controllers/chatroom.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/controllers/longpolling.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/controllers/websocket.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/models/archive.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/routers/router.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/static/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/static/fonts/glyphicons-halflings-regular.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/static/fonts/glyphicons-halflings-regular.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/static/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/static/fonts/glyphicons-halflings-regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/static/img/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/static/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/static/js/jquery-1.10.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/static/js/jquery-1.10.1.min.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/static/js/longpolling.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/static/js/websocket.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/views/base/base.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/views/base/footer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/views/base/head.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/views/base/navbar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/views/longpolling.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/views/websocket.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beego/beego-web-im/views/welcome.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/go-webserver/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/go-webserver/assets/main.tmpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/go-webserver/assets/qr.code.body.tmpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/go-webserver/assets/sphere.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/go-webserver/assets/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/go-webserver/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/graphql/cards/card.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/graphql/cards/resolve.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/graphql/cards/resolve_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/graphql/cards/schema.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/graphql/cards/schema_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/graphql/cards/type.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/graphql/cards/type_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/graphql/example/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/simple_server/main.go" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GOROOT" path="/usr/local/Cellar/go/1.13.4/libexec" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="1jsUAijhZOGSkIjYyUhSrFypbyX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4b695f63-4372-4742-9c83-40054d92fed5" name="Default Changelist" comment="" />
+      <created>1604592152027</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604592152027</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="418" y="94" width="604" height="735" key="find.popup" timestamp="1604592159391">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="418" y="94" width="604" height="735" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1604592159391" />
+    <state x="385" y="223" key="search.everywhere.popup" timestamp="1604592162255">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="385" y="223" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1604592162255" />
+  </component>
+</project>

@@ -3,135 +3,20 @@
       - [TCP 服务器](/Web%20开发/HTTP%20处理/TCP%20服务器.md)
       - [简单 Web 服务](/Web%20开发/HTTP%20处理/简单%20Web%20服务.md)
       - [请求处理](/Web%20开发/HTTP%20处理/请求处理.md)
-    - [grpc](/Web%20开发/grpc/README.md)
+    - examples
+      - beego
+        - [beego shorturl](/Web%20开发/examples/beego/beego-shorturl/README.md)
+          - [README_ZH](/Web%20开发/examples/beego/beego-shorturl/README_ZH.md)
+        - [beego todo](/Web%20开发/examples/beego/beego-todo/README.md)
+          - [README_ZH](/Web%20开发/examples/beego/beego-todo/README_ZH.md)
+        - [beego web dav](/Web%20开发/examples/beego/beego-web-dav/README.md)
+          
+        - [beego web im](/Web%20开发/examples/beego/beego-web-im/README.md)
+          - [README_ZH](/Web%20开发/examples/beego/beego-web-im/README_ZH.md)
+      - [go webserver](/Web%20开发/examples/go-webserver/README.md)
+        
+    - [gRPC](/Web%20开发/gRPC/README.md)
       
-  - [algorithms](/algorithms/README.md)
-    - array
-      - [duplicates](/algorithms/array/duplicates/README.md)
-        
-      - [groupanagrams](/algorithms/array/groupanagrams/README.md)
-        
-      - [minmeetingrooms](/algorithms/array/minmeetingrooms/README.md)
-        
-      - rotations
-        - [countrotations](/algorithms/array/rotations/countrotations/README.md)
-          
-        - [minrotations](/algorithms/array/rotations/minrotations/README.md)
-          
-      - streams
-        - [movingaverages](/algorithms/array/streams/movingaverages/README.md)
-          
-        - [runningaverages](/algorithms/array/streams/runningaverages/README.md)
-          
-        - [runningmedians](/algorithms/array/streams/runningmedians/README.md)
-          
-    - list
-      - [detectcycles](/algorithms/list/detectcycles/README.md)
-        
-      - [detectintersections](/algorithms/list/detectintersections/README.md)
-        
-      - linkedlist
-        - [doublelinkedlists](/algorithms/list/linkedlist/doublelinkedlists/README.md)
-          
-        - [singlelinkedlists](/algorithms/list/linkedlist/singlelinkedlists/README.md)
-          
-      - [reverses](/algorithms/list/reverses/README.md)
-        
-    - map
-      - [hashmap](/algorithms/map/hashmap/README.md)
-        
-      - [hashmultimaps](/algorithms/map/hashmultimaps/README.md)
-        
-      - [lrucaches](/algorithms/map/lrucaches/README.md)
-        
-    - number_theory
-      - [armstrongs](/algorithms/number_theory/armstrongs/README.md)
-        
-      - [bases](/algorithms/number_theory/bases/README.md)
-        
-      - [countdigits](/algorithms/number_theory/countdigits/README.md)
-        
-      - [excels](/algorithms/number_theory/excels/README.md)
-        
-      - [fibonaccis](/algorithms/number_theory/fibonaccis/README.md)
-        
-      - [leapyears](/algorithms/number_theory/leapyears/README.md)
-        
-      - [palindromes](/algorithms/number_theory/palindromes/README.md)
-        
-      - [perfects](/algorithms/number_theory/perfects/README.md)
-        
-      - [postfixes](/algorithms/number_theory/postfixes/README.md)
-        
-      - [powers](/algorithms/number_theory/powers/README.md)
-        
-      - [primes](/algorithms/number_theory/primes/README.md)
-        
-      - [repeatingfractions](/algorithms/number_theory/repeatingfractions/README.md)
-        
-      - [reverses](/algorithms/number_theory/reverses/README.md)
-        
-    - queue
-      - [priorityqueues](/algorithms/queue/priorityqueues/README.md)
-        
-      - [simple_queue](/algorithms/queue/simple_queue/README.md)
-        
-    - scheduler
-      - [minitask](/algorithms/scheduler/minitask/README.md)
-        
-    - set
-      - [hashmultisets](/algorithms/set/hashmultisets/README.md)
-        
-      - [hashsets](/algorithms/set/hashsets/README.md)
-        
-    - stack
-      - [balancedparantheses](/algorithms/stack/balancedparantheses/README.md)
-        
-      - [linkedliststacks](/algorithms/stack/linkedliststacks/README.md)
-        
-      - [minmaxstacks](/algorithms/stack/minmaxstacks/README.md)
-        
-      - [slicestacks](/algorithms/stack/slicestacks/README.md)
-        
-    - string
-      - [addbinaries](/algorithms/string/addbinaries/README.md)
-        
-      - palindromes
-        - [palindromesentences](/algorithms/string/palindromes/palindromesentences/README.md)
-          
-        - [palindromestrings](/algorithms/string/palindromes/palindromestrings/README.md)
-          
-      - reverses
-        - [reversesentences](/algorithms/string/reverses/reversesentences/README.md)
-          
-        - [reversestrings](/algorithms/string/reverses/reversestrings/README.md)
-          
-      - [sorts](/algorithms/string/sorts/README.md)
-        
-      - [wordbreakers](/algorithms/string/wordbreakers/README.md)
-        
-    - tree
-      - balancedtrees
-        - [balancedbinarytrees](/algorithms/tree/balancedtrees/balancedbinarytrees/README.md)
-          
-        - [balancedmultitrees](/algorithms/tree/balancedtrees/balancedmultitrees/README.md)
-          
-      - heights
-        - [binarytreeheights](/algorithms/tree/heights/binarytreeheights/README.md)
-          
-        - [multitreeheights](/algorithms/tree/heights/multitreeheights/README.md)
-          
-      - inverttrees
-        - [invertbinarytrees](/algorithms/tree/inverttrees/invertbinarytrees/README.md)
-          
-        - [invertmultitrees](/algorithms/tree/inverttrees/invertmultitrees/README.md)
-          
-      - [longestdistinctpaths](/algorithms/tree/longestdistinctpaths/README.md)
-        
-      - [printcolumns](/algorithms/tree/printcolumns/README.md)
-        
-      - [printlevels](/algorithms/tree/printlevels/README.md)
-        
   - [examples](/examples/README.md)
     - basic
       - [local interfaces](/examples/basic/local-interfaces/README.md)
@@ -414,18 +299,6 @@
         
       - [website](/examples/standards-layout/website/README.md)
         
-    - web
-      - beego
-        - [beego shorturl](/examples/web/beego/beego-shorturl/README.md)
-          - [README_ZH](/examples/web/beego/beego-shorturl/README_ZH.md)
-        - [beego todo](/examples/web/beego/beego-todo/README.md)
-          - [README_ZH](/examples/web/beego/beego-todo/README_ZH.md)
-        - [beego web dav](/examples/web/beego/beego-web-dav/README.md)
-          
-        - [beego web im](/examples/web/beego/beego-web-im/README.md)
-          - [README_ZH](/examples/web/beego/beego-web-im/README_ZH.md)
-      - [go webserver](/examples/web/go-webserver/README.md)
-        
   - 工程实践
     - [Cgo](/工程实践/Cgo/README.md)
       
@@ -481,6 +354,134 @@
     - 线程池
       - [自定义线程池](/并发编程/线程池/自定义线程池.md)
       - [超时与取消](/并发编程/线程池/超时与取消.md)
+  - 数据结构
+    - [code](/数据结构/code/README.md)
+      - array
+        - [duplicates](/数据结构/code/array/duplicates/README.md)
+          
+        - [groupanagrams](/数据结构/code/array/groupanagrams/README.md)
+          
+        - [minmeetingrooms](/数据结构/code/array/minmeetingrooms/README.md)
+          
+        - rotations
+          - [countrotations](/数据结构/code/array/rotations/countrotations/README.md)
+            
+          - [minrotations](/数据结构/code/array/rotations/minrotations/README.md)
+            
+        - streams
+          - [movingaverages](/数据结构/code/array/streams/movingaverages/README.md)
+            
+          - [runningaverages](/数据结构/code/array/streams/runningaverages/README.md)
+            
+          - [runningmedians](/数据结构/code/array/streams/runningmedians/README.md)
+            
+      - list
+        - [detectcycles](/数据结构/code/list/detectcycles/README.md)
+          
+        - [detectintersections](/数据结构/code/list/detectintersections/README.md)
+          
+        - linkedlist
+          - [doublelinkedlists](/数据结构/code/list/linkedlist/doublelinkedlists/README.md)
+            
+          - [singlelinkedlists](/数据结构/code/list/linkedlist/singlelinkedlists/README.md)
+            
+        - [reverses](/数据结构/code/list/reverses/README.md)
+          
+      - map
+        - [hashmap](/数据结构/code/map/hashmap/README.md)
+          
+        - [hashmultimaps](/数据结构/code/map/hashmultimaps/README.md)
+          
+        - [lrucaches](/数据结构/code/map/lrucaches/README.md)
+          
+      - number_theory
+        - [armstrongs](/数据结构/code/number_theory/armstrongs/README.md)
+          
+        - [bases](/数据结构/code/number_theory/bases/README.md)
+          
+        - [countdigits](/数据结构/code/number_theory/countdigits/README.md)
+          
+        - [excels](/数据结构/code/number_theory/excels/README.md)
+          
+        - [fibonaccis](/数据结构/code/number_theory/fibonaccis/README.md)
+          
+        - [leapyears](/数据结构/code/number_theory/leapyears/README.md)
+          
+        - [palindromes](/数据结构/code/number_theory/palindromes/README.md)
+          
+        - [perfects](/数据结构/code/number_theory/perfects/README.md)
+          
+        - [postfixes](/数据结构/code/number_theory/postfixes/README.md)
+          
+        - [powers](/数据结构/code/number_theory/powers/README.md)
+          
+        - [primes](/数据结构/code/number_theory/primes/README.md)
+          
+        - [repeatingfractions](/数据结构/code/number_theory/repeatingfractions/README.md)
+          
+        - [reverses](/数据结构/code/number_theory/reverses/README.md)
+          
+      - queue
+        - [priorityqueues](/数据结构/code/queue/priorityqueues/README.md)
+          
+        - [simple_queue](/数据结构/code/queue/simple_queue/README.md)
+          
+      - scheduler
+        - [minitask](/数据结构/code/scheduler/minitask/README.md)
+          
+      - set
+        - [hashmultisets](/数据结构/code/set/hashmultisets/README.md)
+          
+        - [hashsets](/数据结构/code/set/hashsets/README.md)
+          
+      - stack
+        - [balancedparantheses](/数据结构/code/stack/balancedparantheses/README.md)
+          
+        - [linkedliststacks](/数据结构/code/stack/linkedliststacks/README.md)
+          
+        - [minmaxstacks](/数据结构/code/stack/minmaxstacks/README.md)
+          
+        - [slicestacks](/数据结构/code/stack/slicestacks/README.md)
+          
+      - string
+        - [addbinaries](/数据结构/code/string/addbinaries/README.md)
+          
+        - palindromes
+          - [palindromesentences](/数据结构/code/string/palindromes/palindromesentences/README.md)
+            
+          - [palindromestrings](/数据结构/code/string/palindromes/palindromestrings/README.md)
+            
+        - reverses
+          - [reversesentences](/数据结构/code/string/reverses/reversesentences/README.md)
+            
+          - [reversestrings](/数据结构/code/string/reverses/reversestrings/README.md)
+            
+        - [sorts](/数据结构/code/string/sorts/README.md)
+          
+        - [wordbreakers](/数据结构/code/string/wordbreakers/README.md)
+          
+      - tree
+        - balancedtrees
+          - [balancedbinarytrees](/数据结构/code/tree/balancedtrees/balancedbinarytrees/README.md)
+            
+          - [balancedmultitrees](/数据结构/code/tree/balancedtrees/balancedmultitrees/README.md)
+            
+        - heights
+          - [binarytreeheights](/数据结构/code/tree/heights/binarytreeheights/README.md)
+            
+          - [multitreeheights](/数据结构/code/tree/heights/multitreeheights/README.md)
+            
+        - inverttrees
+          - [invertbinarytrees](/数据结构/code/tree/inverttrees/invertbinarytrees/README.md)
+            
+          - [invertmultitrees](/数据结构/code/tree/inverttrees/invertmultitrees/README.md)
+            
+        - [longestdistinctpaths](/数据结构/code/tree/longestdistinctpaths/README.md)
+          
+        - [printcolumns](/数据结构/code/tree/printcolumns/README.md)
+          
+        - [printlevels](/数据结构/code/tree/printlevels/README.md)
+          
   - 语法基础
     - [元编程](/语法基础/元编程/README.md)
       - [反射](/语法基础/元编程/反射.md)

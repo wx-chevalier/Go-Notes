@@ -482,6 +482,8 @@
           
         - [printlevels](/数据结构/code/tree/printlevels/README.md)
           
+  - [设计模式](/设计模式/README.md)
+    
   - 语法基础
     - [元编程](/语法基础/元编程/README.md)
       - [反射](/语法基础/元编程/反射.md)

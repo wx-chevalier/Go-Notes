@@ -1,4 +1,4 @@
-package duplicates
+package main
 
 import (
 	"testing"

@@ -1,9 +1,24 @@
-package hashmultisets
+package set
 
 import "sort"
 
-// New factory that creates a new Hash Multi Set
-func New(values ...interface{}) *HashMultiSet {
+/**
+### Description
+
+Implement a Multi Set. Like a set, it allows for efficient storage and retrieval of items without a guaranteed order.
+
+However, unlike a set, it allows for multiple occurrences of the same element by tracking the count of each unique element it contains.
+
+### Example:
+
+```
+Input: values = "value1", "value2"
+Output: [[{key: "value1", count:2}, {key: "value2", count:1}]]
+```
+**/
+
+// NewHashMultiSet factory that creates a new Hash Multi Set
+func NewHashMultiSet(values ...interface{}) *HashMultiSet {
 	set := HashMultiSet{data: make(map[interface{}]int, len(values))}
 	set.Add(values...)
 	return &set

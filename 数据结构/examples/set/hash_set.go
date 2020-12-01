@@ -1,7 +1,17 @@
-package hashsets
+package set
 
-// New factory that creates a hash set
-func New(values ...interface{}) *HashSet {
+/**
+
+实现一个集合。集合是一个不能包含重复元素的集合。
+
+```
+Input: values = "value1", "value1", "value2"
+Output: ["value1", "value2"]
+```
+*/
+
+// NewHashSet factory that creates a hash set
+func NewHashSet(values ...interface{}) *HashSet {
 	set := HashSet{data: make(map[interface{}]struct{}, len(values))}
 	set.Add(values...)
 	return &set

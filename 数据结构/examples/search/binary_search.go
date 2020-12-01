@@ -1,7 +1,7 @@
 /*
 	Binary search implementation in Go
 */
-package main
+package search
 
 func binarySearch(array []int, target int, lowIndex int, highIndex int) int {
 	if highIndex < lowIndex {

@@ -1,4 +1,4 @@
-package hashmultisets
+package set
 
 import (
 	"testing"

@@ -1,8 +1,9 @@
-package hashsets
+package set
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestHashSet(t *testing.T) {

@@ -184,8 +184,8 @@ scase.c 为当前 case 语句所操作的 channel 指针，这也说明了一个
 
 scase.elem 表示缓冲区地址，跟据 scase.kind 不同，有不同的用途：
 
-- scase.kind == caseRecv ：scase.elem 表示读出 channel 的数据存放地址；
-- scase.kind == caseSend ：scase.elem 表示将要写入 channel 的数据存放地址；
+- scase.kind == caseRecv：scase.elem 表示读出 channel 的数据存放地址；
+- scase.kind == caseSend：scase.elem 表示将要写入 channel 的数据存放地址；
 
 ## select 实现逻辑
 

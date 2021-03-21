@@ -1,5 +1,30 @@
-![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)
-![](https://parg.co/bDm)
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![license: CC BY-NC-SA 4.0](https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-lightgrey.svg)][license-url]
+
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/wx-chevalier/Go-Series">
+    <img src="header.svg" alt="Logo" style="width: 100vw;height: 400px" />
+  </a>
+
+  <p align="center">
+    <a href="https://ng-tech.icu/Go-Series"><strong>在线阅读 >> </strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/wx-chevalier/Awesome-CheatSheets">速览手册</a>
+    ·
+    <a href="./examples">代码案例</a>
+    ·
+    <a href="https://github.com/wx-chevalier/Awesome-Lists">参考资料</a>
+
+  </p>
+</p>
+
+<!-- ABOUT THE PROJECT -->
 
 ![Go Series](https://user-images.githubusercontent.com/5803001/38078769-e6b9ecea-336f-11e8-89c8-b40880b3428c.jpg)
 
@@ -26,3 +51,14 @@ Go 语言很多时候被描述为“类 C 语言”，或者是“21 世纪的 C
 ## TBD
 
 - https://mp.weixin.qq.com/s/wE_z7MxDJjIVDN16578tDw Go 语言十年而立，Go2 蓄势待发
+
+[contributors-shield]: https://img.shields.io/github/contributors/wx-chevalier/Go-Series.svg?style=flat-square
+[contributors-url]: https://github.com/wx-chevalier/Go-Series/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/wx-chevalier/Go-Series.svg?style=flat-square
+[forks-url]: https://github.com/wx-chevalier/Go-Series/network/members
+[stars-shield]: https://img.shields.io/github/stars/wx-chevalier/Go-Series.svg?style=flat-square
+[stars-url]: https://github.com/wx-chevalier/Go-Series/stargazers
+[issues-shield]: https://img.shields.io/github/issues/wx-chevalier/Go-Series.svg?style=flat-square
+[issues-url]: https://github.com/wx-chevalier/Go-Series/issues
+[license-shield]: https://img.shields.io/github/license/wx-chevalier/Go-Series.svg?style=flat-square
+[license-url]: https://github.com/wx-chevalier/Go-Series/blob/master/LICENSE.txt

@@ -82,7 +82,7 @@ func ToJson(err error) string
 
 ```go
 import (
-	"dev.wx/errors"
+	"ngte/errors"
 )
 
 func loadConfig() error {

@@ -1,4 +1,4 @@
-module dev.wx
+module ngte
 
 go 1.13
 

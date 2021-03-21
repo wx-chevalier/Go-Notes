@@ -7,3 +7,11 @@ Go 语言程序的初始化和执行总是从 main.main 函数开始的。但是
 ![包初始化流程](https://s2.ax1x.com/2019/11/30/QVHSRP.png)
 
 要注意的是，在 main.main 函数执行之前所有代码都运行在同一个 goroutine，也就是程序的主系统线程中。因此，如果某个 init 函数内部用 go 关键字启动了新的 goroutine 的话，新的 goroutine 只有在进入 main.main 函数之后才可能被执行到。
+
+# Links
+
+- [Go 1.11 Modules](https://parg.co/01g): Go 1.11 includes preliminary support for versioned modules as proposed here.
+
+- [2018-go-modules-by-example #Series#](https://github.com/go-modules-by-example/index): Go modules by example is a series of work-along guides.
+
+- [2019-Using Go Modules](https://blog.golang.org/using-go-modules): This blog post is a tutorial to introduction to the basic operations needed to get started using modules. A followup post will cover releasing modules for others to use.

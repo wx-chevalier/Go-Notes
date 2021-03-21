@@ -136,3 +136,7 @@ type Speaker interface {
 
 func Perform(a Speaker) { return a.Speaks() }
 ```
+
+# Links
+
+- [浅入浅出 Go 语言接口的原理](https://draveness.me/golang-interface?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io): 在这一节中，我们就会介绍 Go 语言中这个重要类型 interface 的一些常见问题以及它底层的实现，包括接口的基本原理、类型断言和转换的过程以及动态派发机制，帮助各位 Go 语言开发者更好地理解 interface 类型。

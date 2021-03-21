@@ -114,6 +114,6 @@ signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM)
 fmt.Printf("quit (%v)\n", <-sig)
 ```
 
-# TBD
+# Links
 
 - 完成 Go Web Server 并发控制一文 https://github.com/eliben/code-for-blog/blob/master/2019/gohttpconcurrency/channel-manager-server.go

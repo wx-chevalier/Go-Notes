@@ -142,6 +142,6 @@ Go 号称分布式，但大多 Go 的依赖库都是存在 Github 上，如果 G
 
 因为上面讲到的一系列问题，go.sum 在多人维护的大项目上，经常会发生变动，也就经常会有冲突。对于中心化版本管理系统来说，这个问题根本就不存在。对于 go mod 来说，go.sum 合并本来是个纯追加逻辑。
 
-# TBD
+# Links
 
 - https://mp.weixin.qq.com/s/Sxv5qb-v6OIhPptLWAHYUw Go Module 来了，企业私有代理你准备好了吗？

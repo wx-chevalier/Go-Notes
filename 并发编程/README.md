@@ -26,4 +26,4 @@ CSP 是 Go 并发重要的理论基石，而同时 Go 还支持通过内存访�
 
 # Links
 
-- [2017-Concurrency in Go 中文笔记 #Book#](https://www.kancloud.cn/mutouzhang/go/596804): 以希望大家能够了解并掌握有关 Go 中并发性的高质量、全面的信息：如何使用它，如何将最佳实践和模式整合到系统中，以及它们如何在所有系统中运行。我尽力在这些考量之间取得平衡。#Todo
+- [2017-Concurrency in Go 中文笔记 #Book#](https://www.kancloud.cn/mutouzhang/go/596804): 以希望大家能够了解并掌握有关 Go 中并发性的高质量、全面的信息：如何使用它，如何将最佳实践和模式整合到系统中，以及它们如何在所有系统中运行。我尽力在这些考量之间取得平衡。TODO!

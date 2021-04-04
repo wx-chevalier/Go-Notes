@@ -48,10 +48,6 @@ Go 语言很多时候被描述为“类 C 语言”，或者是“21 世纪的 C
 
 [![NGTE Books](https://s2.ax1x.com/2020/01/18/19uXtI.png)](https://ng-tech.icu/books/)
 
-## Links
-
-- https://mp.weixin.qq.com/s/wE_z7MxDJjIVDN16578tDw Go 语言十年而立，Go2 蓄势待发
-
 [contributors-shield]: https://img.shields.io/github/contributors/wx-chevalier/Go-Series.svg?style=flat-square
 [contributors-url]: https://github.com/wx-chevalier/Go-Series/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/wx-chevalier/Go-Series.svg?style=flat-square

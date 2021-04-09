@@ -39,3 +39,7 @@ for i := 0; i < numGreeters; i++ {
 }
 wg.Wait()
 ```
+
+# Links
+
+- https://cubox.pro/c/Dic3Ra Golang WaitGroup 原理深度剖析

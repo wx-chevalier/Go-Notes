@@ -118,7 +118,7 @@ Go list，Go test，Go build，所有命令都会去拉取依赖，有些库是�
 
 Go 号称分布式，但大多 Go 的依赖库都是存在 Github 上，如果 Github 上的原作者删除了该库，那么也会导致大多数的依赖用户 build 失败。
 
-即使看起来我们可以靠 go.mod 和 go.sum 来实现 reproducible build，实际的情况是，像 k8s 这样的项目，依然会把庞大的依赖库放在自己 repo 的 vendor 里。
+即使看起来我们可以靠 go.mod 和 go.sum 来实现 reproducible build，实际的情况是，像 K8s 这样的项目，依然会把庞大的依赖库放在自己 repo 的 vendor 里。
 
 ## Github release/tag 水土不服
 

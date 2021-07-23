@@ -145,3 +145,4 @@ Go 号称分布式，但大多 Go 的依赖库都是存在 Github 上，如果 G
 # Links
 
 - https://mp.weixin.qq.com/s/Sxv5qb-v6OIhPptLWAHYUw Go Module 来了，企业私有代理你准备好了吗？
+- https://colobu.com/2021/07/04/dive-into-go-module-3/?hmsr=toutiao.io 深入 Go Module 之未说的秘密

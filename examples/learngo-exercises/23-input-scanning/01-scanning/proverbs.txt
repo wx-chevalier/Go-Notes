@@ -1,4 +1,0 @@
-Go Proverbs
-Make the zero value useful
-Clear is better than clever
-Errors are values

@@ -7,12 +7,12 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/wx-chevalier/Go-Series">
+  <a href="https://github.com/wx-chevalier/Go-Notes">
     <img src="https://assets.ng-tech.icu/item/header.svg" alt="Logo" style="width: 100vw;height: 400px" />
   </a>
 
   <p align="center">
-    <a href="https://ng-tech.icu/books/Go-Series"><strong>在线阅读 >> </strong></a>
+    <a href="https://ng-tech.icu/books/Go-Notes"><strong>在线阅读 >> </strong></a>
     <br />
     <br />
     <a href="https://github.com/wx-chevalier">代码案例</a>
@@ -34,7 +34,7 @@ Go 语言很多时候被描述为“类 C 语言”，或者是“21 世纪的 C
 
 ## RoadMap | 学习路径
 
-[Go-Series](https://github.com/wx-chevalier/Go-Series) 涵盖了 Golang 由浅入深的学习笔记，更多的 Go 相关的教程、书籍、示例可以参考 [Awesome-Lists](https://github.com/wx-chevalier/Awesome-Lists)。读者可以配套 [go-snippets](https://github.com/Dev-Snippets/go-snippets) 进行动手实践。接下来可以前往 [design-pattern-snippets](https://github.com/Dev-Snippets/design-pattern-snippets) 以及 [algorithm-snippets](https://github.com/Dev-Snippets/algorithm-snippets) 通过设计模式与算法来进行进一步的实践。最后，在笔者的 [go](https://github.com/topics/wx-go) 系列仓库中，您还可以查阅软件系统设计、微服务、数据库、分布式系统等等多领域的深入实践。
+[Go-Notes](https://github.com/wx-chevalier/Go-Notes) 涵盖了 Golang 由浅入深的学习笔记，更多的 Go 相关的教程、书籍、示例可以参考 [Awesome-Lists](https://github.com/wx-chevalier/Awesome-Lists)。读者可以配套 [go-snippets](https://github.com/Dev-Snippets/go-snippets) 进行动手实践。接下来可以前往 [design-pattern-snippets](https://github.com/Dev-Snippets/design-pattern-snippets) 以及 [algorithm-snippets](https://github.com/Dev-Snippets/algorithm-snippets) 通过设计模式与算法来进行进一步的实践。最后，在笔者的 [go](https://github.com/topics/wx-go) 系列仓库中，您还可以查阅软件系统设计、微服务、数据库、分布式系统等等多领域的深入实践。
 
 ![Go MindMap](https://s2.ax1x.com/2019/12/03/QMxpfx.png)
 
@@ -46,13 +46,13 @@ Go 语言很多时候被描述为“类 C 语言”，或者是“21 世纪的 C
 
 [![NGTE Books](https://s2.ax1x.com/2020/01/18/19uXtI.png)](https://ng-tech.icu/books-gallery/)
 
-[contributors-shield]: https://img.shields.io/github/contributors/wx-chevalier/Go-Series.svg?style=flat-square
-[contributors-url]: https://github.com/wx-chevalier/Go-Series/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/wx-chevalier/Go-Series.svg?style=flat-square
-[forks-url]: https://github.com/wx-chevalier/Go-Series/network/members
-[stars-shield]: https://img.shields.io/github/stars/wx-chevalier/Go-Series.svg?style=flat-square
-[stars-url]: https://github.com/wx-chevalier/Go-Series/stargazers
-[issues-shield]: https://img.shields.io/github/issues/wx-chevalier/Go-Series.svg?style=flat-square
-[issues-url]: https://github.com/wx-chevalier/Go-Series/issues
-[license-shield]: https://img.shields.io/github/license/wx-chevalier/Go-Series.svg?style=flat-square
-[license-url]: https://github.com/wx-chevalier/Go-Series/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/wx-chevalier/Go-Notes.svg?style=flat-square
+[contributors-url]: https://github.com/wx-chevalier/Go-Notes/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/wx-chevalier/Go-Notes.svg?style=flat-square
+[forks-url]: https://github.com/wx-chevalier/Go-Notes/network/members
+[stars-shield]: https://img.shields.io/github/stars/wx-chevalier/Go-Notes.svg?style=flat-square
+[stars-url]: https://github.com/wx-chevalier/Go-Notes/stargazers
+[issues-shield]: https://img.shields.io/github/issues/wx-chevalier/Go-Notes.svg?style=flat-square
+[issues-url]: https://github.com/wx-chevalier/Go-Notes/issues
+[license-shield]: https://img.shields.io/github/license/wx-chevalier/Go-Notes.svg?style=flat-square
+[license-url]: https://github.com/wx-chevalier/Go-Notes/blob/master/LICENSE.txt

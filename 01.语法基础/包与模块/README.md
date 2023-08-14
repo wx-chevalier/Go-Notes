@@ -14,4 +14,4 @@ Go 语言程序的初始化和执行总是从 main.main 函数开始的。但是
 
 - [2018-go-modules-by-example #Series#](https://github.com/go-modules-by-example/index): Go modules by example is a series of work-along guides.
 
-- [2019-Using Go Modules](https://blog.golang.org/using-go-modules): This blog post is a tutorial to introduction to the basic operations needed to get started using modules. A followup post will cover releasing modules for others to use.
+- [2019~Using Go Modules](https://blog.golang.org/using-go-modules): This blog post is a tutorial to introduction to the basic operations needed to get started using modules. A followup post will cover releasing modules for others to use.

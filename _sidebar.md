@@ -1,7 +1,7 @@
   - [1 01.语法基础 [12]](/01.语法基础/README.md)
     - [1.1 01.快速开始 [4]](/01.语法基础/01.快速开始/README.md)
-      - 1.1.1 99.参考资料 [1]
-        - [1.1.1.1 How to start a Go project in 2023](/01.语法基础/01.快速开始/99.参考资料/How%20to%20start%20a%20Go%20project%20in%202023.md)
+      - 1.1.1 99~参考资料 [1]
+        - [1.1.1.1 How to start a Go project in 2023](/01.语法基础/01.快速开始/99~参考资料/How%20to%20start%20a%20Go%20project%20in%202023.md)
       - [1.1.2 Web 应用](/01.语法基础/01.快速开始/Web%20应用.md)
       - [1.1.3 命令行应用 [2]](/01.语法基础/01.快速开始/命令行应用/README.md)
         - [1.1.3.1 Cobra](/01.语法基础/01.快速开始/命令行应用/Cobra.md)
@@ -67,8 +67,8 @@
       - [2.3.5 泛型](/02.数据类型与结构/类型系统/泛型.md)
   - [3 03.并发编程 [8]](/03.并发编程/README.md)
     - [3.1 01.Goroutine [5]](/03.并发编程/01.Goroutine/README.md)
-      - 3.1.1 99.参考资料 [1]
-        - [3.1.1.1 Goroutines: the concurrency model we wanted all along](/03.并发编程/01.Goroutine/99.参考资料/2023-Goroutines:%20the%20concurrency%20model%20we%20wanted%20all%20along.md)
+      - 3.1.1 99~参考资料 [1]
+        - [3.1.1.1 Goroutines: the concurrency model we wanted all along](/03.并发编程/01.Goroutine/99~参考资料/2023-Goroutines:%20the%20concurrency%20model%20we%20wanted%20all%20along.md)
       - [3.1.2 内存模型](/03.并发编程/01.Goroutine/内存模型.md)
       - [3.1.3 并行计算](/03.并发编程/01.Goroutine/并行计算.md)
       - [3.1.4 性能评测](/03.并发编程/01.Goroutine/性能评测.md)

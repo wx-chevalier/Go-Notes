@@ -25,4 +25,4 @@ if err != nil {
 
 # Links
 
-- [2017-Pipeline Patterns in Go](https://medium.com/statuscode/pipeline-patterns-in-go-a37bb3a7e61d): In this article, that pipeline pattern in Golang is extended with improved error-handling and cancellation.
+- [2017~Pipeline Patterns in Go](https://medium.com/statuscode/pipeline-patterns-in-go-a37bb3a7e61d): In this article, that pipeline pattern in Golang is extended with improved error-handling and cancellation.

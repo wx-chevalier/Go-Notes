@@ -4,4 +4,4 @@
 
 # Links
 
-- [2017-The Zoo of Go Functions](https://parg.co/U5u): An overview about: anonymous, higher-order, closures, concurrent, deferred, and other kinds of Golang funcs.
+- [2017~The Zoo of Go Functions](https://parg.co/U5u): An overview about: anonymous, higher-order, closures, concurrent, deferred, and other kinds of Golang funcs.

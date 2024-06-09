@@ -22,6 +22,7 @@ package main
 import (
     "fmt"
 )
+
 func main() {
     var cat int = 1
     var str string = "banana"
@@ -161,7 +162,7 @@ Go 语言还提供了另外一种方法来创建指针变量，格式如下：
 new(类型)
 
 str := new(string)
-*str = "Go语言教程"
+*str = "Go 语言教程"
 fmt.Println(*str)
 ```
 

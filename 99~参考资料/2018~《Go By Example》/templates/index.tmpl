@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go by Example</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <body>
+    <div id="intro">
+      <h2><a href="./">Go by Example</a></h2>
+      <p>
+        <a href="https://go.dev">Go</a> is an
+        open source programming language designed for
+        building simple, fast, and reliable software.
+        Please read the official
+        <a href="https://go.dev/doc/tutorial/getting-started">documentation</a>
+        to learn a bit about Go code, tools packages,
+        and modules.
+      </p>
+
+      <p>
+        <em>Go by Example</em> is a hands-on introduction
+        to Go using annotated example programs. Check out
+        the <a href="hello-world">first example</a> or
+        browse the full list below.
+      </p>
+
+      <ul>
+      {{range .}}
+        <li><a href="{{.ID}}">{{.Name}}</a></li>
+      {{end}}
+      </ul>
+{{ template "footer" }}
+    </div>
+  </body>
+</html>

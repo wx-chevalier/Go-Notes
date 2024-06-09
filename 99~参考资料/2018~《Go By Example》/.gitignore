@@ -1,0 +1,4 @@
+.anvil
+*.pyc
+public/
+.idea

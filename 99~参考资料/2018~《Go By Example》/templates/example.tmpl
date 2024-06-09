@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go by Example: {{.Name}}</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script>
+      onkeydown = (e) => {
+          {{if .PrevExample}}
+          if (e.key == "ArrowLeft") {
+              window.location.href = '{{.PrevExample.ID}}';
+          }
+          {{end}}
+          {{if .NextExample}}
+          if (e.key == "ArrowRight") {
+              window.location.href = '{{.NextExample.ID}}';
+          }
+          {{end}}
+      }
+  </script>
+  <body>
+    <div class="example" id="{{.ID}}">
+      <h2><a href="./">Go by Example</a>: {{.Name}}</h2>
+      {{range .Segs}}
+      <table>
+        {{range .}}
+        <tr>
+          <td class="docs">
+            {{.DocsRendered}}
+          </td>
+          <td class="code{{if .CodeEmpty}} empty{{end}}{{if .CodeLeading}} leading{{end}}">
+            {{if .CodeRun}}<a href="https://go.dev/play/p/{{$.URLHash}}"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />{{end}}
+          {{.CodeRendered}}
+          </td>
+        </tr>
+        {{end}}
+      </table>
+      {{end}}
+      {{if .NextExample}}
+      <p class="next">
+        Next example: <a href="{{.NextExample.ID}}">{{.NextExample.Name}}</a>.
+      </p>
+      {{end}}
+{{ template "footer" }}
+    </div>
+    <script>
+      var codeLines = [];
+      {{range .Segs}}{{range .}}codeLines.push('{{js .CodeForJs}}');{{end}}{{end}}
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>

@@ -1,0 +1,879 @@
+中文的go语言内部细节的资料几乎没有,所以自己研究了一下
+
+声明：本文内容主要来自本人对源代码的研究,以及网上找到的一些资料的整理,不保证完全正确性
+
+* 函数调用协议
+plan9编译器是"caller save"，调用者保存寄存器。被调者可以使用任何寄存器而不必保存它们。
+
+go中没有用%ebp，因为是非连续栈，stack\_base和stack_guard来标识一个栈，保存在struct G中。
+** go关键字
+假设调用 go func(1,2,3) ，func函数会在一个新的go线程中运行，显然新的goroutine不能和当前go线程用同一个栈，否则会相互覆盖。
+
+所以对go关键字的调用协议与普通函数调用是不同的。不像常规的C语言调用是push参数后直接call func，上面代码汇编之后会是：
+
+参数进栈
+#+begin_quote
+push func\\
+push 12\\
+call runtime.newproc\\
+pop\\
+pop\\
+#+end_quote
+
+12是参数占用的大小。在runtime.newproc中，会新建一个栈空间，将栈参数的12个字节拷贝到新栈空间并让栈指针指向参数。
+
+这时的线程状态有点像当被调度器剥夺CPU后一样，pc,sp会被存到类型于类似于进程控制块的一个结构体struct G内。func被存放在了struct G的entry域，后面进行调度时调度器会让goroutine从func开始执行。
+
+这个仅仅是一个语法糖衣而已,也就是:
+#+begin_src C
+go f(arg)
+#+end_src
+可以看作
+#+begin_src C
+runtime.newproc(size, f, argp)
+#+end_src
+
+** defer关键字
+defer关键字调用过程类似于go，不同的是call的是runtime.deferproc
+
+函数返回时，如果其中包含了defer语句，不是调用add xx SP, return
+
+而是call runtime.deferreturn，add 48 sp，return
+
+** 多值返回
+表面上看就是一个语法糖衣:\\
+go语言的
+#+begin_src C
+func f(arg1,arg2 int) (ret1,ret2 int)
+#+end_src
+转换为C语言的
+#+begin_src C
+void f(int arg1, int arg2, int *ret1, int *ret2);
+int ret1,ret2;
+f(xx,xx, &ret1, &ret2)
+#+end_src
+其实简单的这么理解也没什么影响.不过我深究了一下,很类似,但实际上不是这么干的.
+
+并不是调用者传递两个返回值的地址,被调者通过修改这两个地址所指向的值达到返回值的目的.
+
+go的实际做法是在传入的参数之上留了两个空位,被调者直接将返回值放在这两空位,相当于小小的优化了一下.
+
+以上面的f为例,go中函数调用前其内存布局是这样的:\\
+#+begin_quote
+留空位供被调函数设置ret1\\
+留空位供被调函数设置ret2\\
+arg1\\
+arg2\\
+保存函数返回地址\\
+被调者的栈...\\
+#+end_quote
+不过要注意的就是参数是按机器字长对齐过的.
+
+理论上，如果c的代码中没调用c库函数，那么从go调用c应该是完全不必要cgo的。
+在.go文件中声音,在.c文件中实现.必须包含runtime.h头文件.
+go中声明为
+func f(arg1,arg2,arg3 int32) (ret1, ret2 int32)
+在c中的实现是:
+#+begin_src c
+void f(arg1,arg2,arg3, ret1, ret2) {
+    FLUSH(&ret1)
+    FLUSH(&ret2)
+}
+#+end_src
+* 分段栈
+go语言中使用的是栈不是连续的。原因是需要支持goroutine。分段栈的重要意义就在于，栈空间初始分配很小的大小，然后可以随便需要自动地增长栈空间．这样在多线程环境中就可以开千千万万个线程或协程而不至于耗尽内存．
+
+ http://gcc.gnu.org/wiki/SplitStacks
+
+** 基本实现
+   ％gs寄存器存一个tcb结构的地址，go语言中是G这个结构体．这个结构中存了栈基址和stack\_guard
+
+   对于使用分段栈的函数，每次进入函数后，前几条指令就是先检测%esp跟stack\_guard比较，如果超了就要扩展栈空间
+** 扩展栈
+   所有用于分配栈空间的函数本身不能使用分段栈．引入一个属性来控制函数的生成．当然，还要保证有足够的空间来调用分配函数。编译器在编译阶段加入特殊的标识.note.GNU-split-stack，链接时对于检测到有这些标签的函数，就会插入特殊指令。扩展完之后，使用新栈之间，需要一些处理
+
+   基于原栈%esp的数据都可以直接复制到新栈中来．对于栈中存的是对象的地址，这样做不会造成问题。对于带参函数，因为参数不能直接搬，编译时要特殊处理．函数使用的参数指针不是基于栈帧的．对于在栈中返回对象的函数，对象必须返回到原栈上
+
+   扩展栈时，函数的返回地址会被修改成一个函数，这个函数会释放分配的栈块，将栈指针重新设置成调用者旧栈块的地址，栈指针等，需要在新栈空间中的某处保存着．
+** 兼容性
+   GCC中使用split栈的函数，编译split栈的函数，会加入.note.GNU-split-stack信息．链接时如果有这些东西，就会链接上split栈的相关runtime库.在gcc实现的split栈中要hack　exit函数以便最后退出时处理这些分裂栈空间．
+** go语言中的具体实现
+  go语言使用的就是分段栈，这样可以起很多个goroutine.
+  http://blog.nella.org/?p=849
+
+  这个上面讲的gcc怎么实现splitstack的，其作者正是gccgo的作者．在go语言的实现中其实思想和方法跟上面都是一致的．
+
+  进入函数后的前几条指令就是取%gs到%ecb  这时获得了结构体G的地址．这个结构体前两个域就是stackguard和stackbase
+
+  我还观察到，好象go编译的程序，没有使用%ebp，可能是因为G中已经存的栈基址的缘故.检测stackguard和%esp，如果空间不够了就会调用到runtime.morestack.这是一个汇编函数，在asm_386.s文件中可以找到
+
+  #+begin_quote
+  TEXT runtime.morestack (SB),7,$0 
+  #+end_quote
+  其中这个7就是告诉编译器这个函数不使用分段栈\\
+  runtime.morestack会把一些信息存到结构体M\\
+  DX中是frame size, AX中是arg size，这些会被保存到M结构体，还有函数返回地址，保存以后这些东西在后面会清空，然后新栈和旧栈信息可以link起来．
+
+  当morestack函数保存好需要的东西以后，它切换到调度器的栈，然后将控制器交给runtime.newstack
+
+  注意调用到runtime.newstack的方式是CALL，并且用的是调度器的栈，函数的退出有点特殊．
+
+  栈空间的分配使用的普通的go runtime的空间分配技术，也就是会垃圾回收．但也有些特殊，也不完全是直接从垃圾回收的池子中来，回来垃圾回收的池子中去．
+
+  runtime.newstack不会返回到调用者morestack.不考虑reflect相关的东西，它做的事情就是分配一块内存，在头部放一个Stktop的结构体，特殊方式退出．\\
+  清除栈时，新栈中保存的这些栈桢的信息会起作用．
+
+  退出使用的是gogocall，是调度器实现上下文切换上函数．相当于直接jump过去的而不是函数调用协议那样过去的．保存的函数返回地址被设置为一个后处理的函数，这样遇到下一次RET指令时，会jump到more.lessstack函数，这个函数做的正好是跟morestack函数相反的工作．然后就到新栈中去工作了．
+
+  再重复一遍整个过程：
+1. 使用分段栈的函数头几个指令检测%esp和stackguard，调用于runtime.morestack
+2. runtime.more函数的主要功能是保存当前的栈的一些信息．然后转换成调试器的栈了调用runtime.newstack
+3. runtime.newstack函数的主要功能是分配空间，装饰此空间，将旧的frame和arg弄到新空间
+4. 使用gogocall的方式切换到新分配的栈，gogocall使用的JMP返回到被中断的函数
+5. 继续执行遇到RET指令时会返回到runtime.less，less做的事情跟more相反，它要准备好从newstack到old　stack
+  整个过程有点像一次中断，中断处理时保存当时的现场，弄个新的栈，中断恢复时恢复到新栈中运行，运行到return时又要从runtime.less走回去
+
+* 编译过程分析
+
+$GOROOT/src/cmd/gc目录，这里gc不是垃圾回收的意思，而是go compiler
+
+6g/8g的源文件的主函数是在lex.c
+
+从这个文件可以看到整个编译的流程。先是利用bison做了词法分析yyparse()
+
+后面就是语法分析,注释中有第一步第二步...最后生成目标文件.8或.6,相当于c的.o
+
+go.y是bison的语法定义文件
+
+事实上go在编译阶段也只是将所有的内容按语法分析的结果放入NodeList这个数据结构里，然后export写成一个*.8(比如i386的架构），这个.8的文件大概是这样子的：
+
+go object linux 386 go1 X:none
+exports automatically generated from
+hello.go in package "even"
+
+$$ // exports
+package even
+import runtime "runtime"
+type @"".T struct { @"".id int }
+func (@"".this *@"".T "noescape") Id() (? int) { return @"".this.@"".id }
+func @"".Even(@"".i int) (? bool) { return @"".i % 2 == 0 }
+func @"".odd(@"".i int) (? bool) { return @"".i % 2 == 1 }
+
+$$ // local types
+
+$$
+
+....
+
+可以自己做实验写个hello.go，运行go tool 8g hello.go
+
+具体的文件格式，可以参考src/cmd/gc/obj.c里的dumpobj函数的实现
+
+而如果我们在源文件里写一个import时，它实际上会将这个obj文件导入到当前的词法分析过程中来，比如
+
+import xxx
+
+它就是会把pkg/amd64-linux/xxx.a加载进来，接着解析这个obj文件
+
+如果我们看go.y的语法分析定义，就会看到许多hidden和there命名的定义，比如import_there, hidden_import等等，这些其实就是从obj文件来的定义。
+
+又比如我们可能会看到一些根本就不存在于源代码中的语法定义，但是它确实编译过了，这是因为在编译过程中源文件被根据需要插入一些其他的碎片进来，比如builtin的一些库或者自定义的一些lib库。
+
+理解了这些，基本上就对go的编译过程有了一个了解，事实上go的编译过程做的事情也就是把它变成obj完事，至少我们目前没有看到更多的工作。接下来想要更深入的理解，就要再看xl的实现了，这部分是将obj变成可执行代码的过程，应该会比较有趣了。
+
+---------------------------------------------------------------------------------------------
+
+* 系统的初始化
+
+proc.c中有一段注释
+
+// The bootstrap sequence is:
+//
+// call osinit
+// call schedinit
+// make & queue new G
+// call runtime·mstart
+//
+// The new G calls runtime·main.
+
+这个可以在$GOROOT/src/pkg/runtime/asm_386.S中看到。go编译生成的程序应该是从这个文件开始执行的。
+
+// saved argc, argv
+...
+CALL runtime·args(SB)
+CALL runtime·osinit(SB) //这个设置cpu核心数量
+CALL runtime·schedinit(SB)
+
+// create a new goroutine to start program
+PUSHL $runtime·main(SB) // entry
+PUSHL $0 // arg size
+CALL runtime·newproc(SB) 
+POPL AX
+POPL AX
+
+// start this M
+CALL runtime·mstart(SB)
+
+还记得前面讲的go线程的调用协议么？先push参数，再push被调函数和参数字节数，接着调用runtime.newproc
+
+所以这里其实就是新开个线程执行runtime.main
+
+runtime.newproc会把runtime.main放到就绪线程队列里面。
+
+本线程继续执行runtime.mstart，m意思是machine。runtime.mstart会调用到schedule
+
+schedule函数绝不返回，它会根据当前线程队列中线程状态挑选一个来运行。
+
+然后就调度到了runtime.main函数中来，runtime.main会调用用户的main函数，即main.main从此进入用户代码
+
+总结一下函数调用流程就是
+
+runtime.osinit --> runtime.schedinit --> runtime.newproc --> runtime.mstart --> schedule --> 
+
+runtime.main --> main.main
+
+这个可以写个helloworld了用gdb调试，一步一步的跟
+
+-----------------------------------------------------------------------------------------------
+
+* 调度器
+** 总体介绍  
+$GOROOT/src/pkg/runtime目录很重要，值得好好研究，源代码可以从runtime.h开始读起。
+
+goroutine实现的是自己的一套线程系统，语言级的支持，与pthread或系统级的线程无关。
+
+一些重要的结构体定义在runtime.h中。两个重要的结构体是G和M
+
+结构体G名字应该是goroutine的缩写，相当于操作系统中的进程控制块，在这里就是线程的控制结构，是对线程的抽象。
+
+其中包括
+#+begin_quote
+goid //线程ID\\
+status//线程状态，如Gidle,Grunnable,Grunning,Gsyscall,Gwaiting,Gdead等\\
+#+end_quote
+
+有个常驻的寄存器extern register G* g被使用，这个是当前线程的线程控制块指针。amd64中这个寄存器是使用R15，在x86中使用0(GS)  分段寄存器
+
+结构体M名字应该是machine的缩写。是对机器的抽象，m其实是对应到操作系统线程。
+
+proc.c中是实现的线程调度相关。
+
+调度器调度的时机是某线程进入系统调用，或申请内存，或由于等待管道而堵塞等
+------------------------------------------------------------------------------------------
+** goroutine的生老病死
+前面函数调用协议里面有说过go关键字最终被弄成了runtime.newproc.就以这个为出发点看整个调度器吧.runtime目录下的proc.c文件.这里有一份我加了注释的文件,放在https://github.com/tiancaiamao/go-internals
+
+runtime.newproc功能是创建一个新的g.这个函数不能用分段栈,真正的工作是调用newproc1完成的.newproc1的动作包括:
+
+#+begin_quote
+   分配一个g的结构体\
+   初始化这个结构体的一些域\
+   将g挂在就绪队列\
+   引发一次调度matchmg
+#+end_quote
+初始化newg的域时,会将调用参数保存到g的栈,将sp,pc等上下文环境保存在g的sched域,这样当这个g被分配了一个m时就可以运行了.
+
+接下来看matchmg函数.这个函数就是做个匹配,只要m没有突破上限GOMAXPROCS,就拿一个m绑定一个g.如果m的waiting队列中有就从队列中拿,否则就要新建一个m,调用runtime.newm
+
+runtime.newm功能跟newproc相似,前者分配一个goroutine,而后者是分配一个machine.调用的runtime.newosproc函数.其实一个machine就是一个操作系统线程的抽象,可以看到它会调用runtime.newosproc.这个新线程会以mstart作为入口地址.当m和g绑定后,mstart会恢复g的sched域中保存的上下文环境,然后继续运行.
+
+随便扫一下runtime.newosproc还是蛮有意思的,代码在thread_linux.c文件中(平台相关的),它调用了runtime.clone(平台相关). runtime.clone是用汇编实现的,代码在sys_linux_386.s.可以看到上面有\\
+INT	$0x80\\
+看到这个就放心了,只要有一点汇编基础知道,你懂的.可以看出,go的runtime果然跟c的runtime半毛钱关系都没有啊
+
+回到runtime.newm函数继续看,它调用runtime.newosproc建立了新的线程,线程是以runtime.mstart为入口的,那么接下来看mstart函数.
+
+mstart是runtime.newosproc新建的线程的入口地址,新线程执行时会从这里开始运行.新线程的执行和goroutine的执行是两个概念,由于有m这一层对机器的抽象,是m在执行g而不是线程在执行g.所以线程的入口是mstart,g的执行要到schedule才算入口.函数mstart的最后调用了schedule.
+
+终于到了schedule了!
+
+如果从mstart进入到schedule的,那么schedule中逻辑非常简单,前面省了一大段代码.大概就这几步:
+
+#+begin_quote
+找到一个等待运行的g\\
+将它搬到m->curg,设置好状态为Grunning\\
+直接切换到g的上下文环境,恢复g的执行
+#+end_quote
+
+从newproc一直出生一直到运行的过程分析,到此结束!
+
+虽然按这样a调用b,b调用c,c调用d,d调用e的方式去分析源代码谁看都会晕掉,但我还是想重复一遍这里的读代码过程后再往下写些有意思的,希望真正感兴趣的读者可以拿着注释过的源码按顺序走一遍:
+
+newproc -> newproc1 -> newprocreadylocked -> matchmg -> (可能引发)newm -> newosproc -> (线程入口)mstart -> schedule -> gogo跳到goroutine运行
+
+以上状态变化经历了Gwaiting->Grunnable->Grunning,经历了创建,到挂在就绪队列,到从就绪队列拿出并运行.下面将从其它几种状态变化继续看调度器,从runtime.entersyscall开始.
+
+runtime.entersyscall做的事情大致是设置g的状态为Gsyscall,减少mcpu.如果mcpu减少之后小于mcpumax了并且有处于就绪态的g,则matchmg
+
+runtime.exitsyscall函数中,如果退出系统调用后mcpu小于mcpumax,直接设置g的状态Grunning.表示让它继续运行.否则如果mcpu达到上限了,则设置readyonstop,表示下一次schedule中将它改成Grunnable了放到就绪队列中
+
+现在Gwaiting,Grunnable,Grunning,Gwaiting都出现过的,接下来看最后两种状态Gmoribund和Gdead.看runtime.goexit函数.这个函数直接把g的状态设置成Gmoribund,然后调用gosched,进入到schedule中.在schedule中如果遇到状态为Gmoribund的g,直接设置g的状态为Gdead,将g与m分离,把g放回到free队列.
+** 简单理解
+接下来看一些有意思点的吧,先不读代码了.一个常规的 线程池+任务队列 的模型如图所示:
+[[file:image/worker.jpg]]
+把每个工作线程叫worker的话,每条线程运行一个worker,每个worker做的事情就是不停地从队列中取出任务并执行:
+#+begin_src c
+while(!empty(queue)) {
+    q = get(queue); //从任务队列中取一个(涉及加锁等)
+    q->callback(); //执行该任务
+}
+#+end_src
+这当然是最简单的情形,但是一个很明显的问题就是一个进入到callback之后,就失去了控制权.因为没有一个调度器层的东西,一个任务可以执行很长很长时间一直占用的worker线程,或者阻塞于io之类的.
+
+这时协程一类的东西就会提供类似yield的函数.callback函数中运行到一定时候就主动调用yield放弃自己的执行,把自己再次放回到任务队列中等待下一次调用时机等等.
+
+将一个正在执行的任务yield出去,再在某个时刻再弄回来继续运行,这就涉及到一个问题,即执行线程的上下文环境.其实go语言中的goroutine就是这里任务的抽象.每个struct G中都会有一个sched域就是用于保存自己上下文的.这样这种"任务"就可以被换出去,再换进来.go语言另一个重要东西就是分段栈,栈初始大小很小(4k),可以自动增长,这样就可以开千千万万的goroutine了.
+
+现在我们的任务变成了这个样子的:
+#+begin_src c
+struct G {
+    Gobuf sched;
+    byte *stack;
+}
+#+end_src
+
+一个线程是一个worker,假如运行到阻塞了呢?那干事的家伙岂不就少了,解耦还是不够.所以不是一个worker对应一条线程的,go语言中又引入了struct M这层抽象.m就是这里的worker,但不是线程.处理系统调用中的m不会占用线程,只有干事的m才会对应线程.
+
+于是就变成了这样子:
+[[file:image/m_g.jpg]]
+然后就变成了线程的入口是mstart,而goroutine的入口是在schedule中m和g都满足之后切换上下文进入的.
+只是由于要优化,所以会搞的更复杂一些.比如要重用内存空间所以会有gfree和mhead之类的东西.
+** 还有几个没讲清楚的地方
+一个没讲清楚的地方就是m->g0这是个什么东西
+还有一点疑问就是:一个m对应一个系统线程,当g进入到syscall时会和m一起绑定.如果g不停地进入syscall并且暂时不返回,岂不是会开很多的系统级线程??
+m寄存器的切换
+
+* 内存管理
+go的内存分配器是基于tcmalloc的.为每个系统线程M分配一个本地的MCache,少量的地址分配就直接从Cache中分配,并且定期做垃圾回收,将线程本地Cache中的空闲内存返回给全局控制堆.
+
+小于32K为小对象,大对象直接从全局控制堆上以页(4k)为单位进行分配,也就是说大对象总是以页对齐的.
+
+一个页可以存入一些相同大小的小对象,小对象从本地内存链表中分配,大对象从中心内存堆中分配
+
+大约有100种内存块类别,每一类别都有自己对象的free list.小于32kB的内存分配被向上取整到对应的尺寸类别,从相应的free list中分配.一页内存可以被分裂成一种尺寸类别的对象,然后由free list分配器管理.
+
+分配器的数据结构包括:
++ FixAlloc: 固定大小(128kB)的对象的空闲链分配器,被分配器用于管理存储
++ MHeap: 分配堆,按页的粒度进行管理(4kB)
++ MSpan: 一些由MHeap管理的页
++ MCentral: 对于给定尺寸类别的共享的free list
++ MCache: 用于小对象的每M一个的cache
++ MStats: 关于分配的统计信息
+
+分配一个小对象(<32kB)进行的缓存层次结构:
+1. 将小对象大小向上取整到一个对应的尺寸类别,查找相应的MCache的空闲链表,如果链表不空,直接从上面分配一个对象.这个过程可以不必加锁.
+2. 如果MCache自由链是空的,通过从MCentral自由链拿一些对象进行补充.拿"一些"分摊了MCentral锁的开销
+3. 如果MCentral自由链是空的,则通过从MHeap中拿一些页进行补充,然后将这些内存截断成规定的大小.分配一些的对象分摊了对堆加锁的开销
+4. 如果MHeap是空的,或者没有足够大小的页了,从操作系统分配一组新的页(至少1MB).分配一大批的页分摊了从操作系统分配的开销.
+
+释放一个小对象进行类似的层次:
+1. 查找对象所属的尺寸类别,将它添加到MCache的自由链
+2. 如果MCache自由链太长或者MCache内存大多了,则返还一些到MCentral自由链
+3. 如果在某个范围的所有的对象都归还到MCentral链了,则将它们归还到页堆.
+4. 如果堆的内存太多,则归还一些到操作系统(TODO:这步还没有实现)
+
+分配和释放大的对象则直接使用页堆,跳过MCache和MCentral自由链
+
+MCache和MCentral中自由链的小对象可能是也可能不是清0了的.当且仅当该对象的第2个字节是清0时,它是清0了的.页堆中的总是清零的.当一定范围的对象归还到页堆时,需要先清零.
+
+写到这里突然看到一篇文章,我觉得他写得比我好,所以我就不继续写下去了:
+http://shiningray.cn/tcmalloc-thread-caching-malloc.html
+
+----------------
+涉及的文件包括:
+malloc.h 头文件
+malloc.goc 最外层的包装
+msize.c 将各种大小向上取整到相应的尺寸类别
+mheap.c 对应MHeap中相关实现,还有MSpan
+mcache.c 对应MCache中相关实现
+mcentral.c 对应MCentral中相关实现
+mem_linux.c SysAlloc等sys相关的实现
+
+** MHeap层次
+MHeap层次用于直接分配较大(>32kB)的内存空间，以及给MCentral和MCache等下层提供空间。它管理的基本单位是MSpan。MSpan是一个表示若干连续内存页的数据结构，简化后如下：
+#+begin_src C
+struct MSpan
+{
+	PageID	start;		// starting page number
+	uintptr	npages;		// number of pages in span
+};
+#+end_src
+通过一个基地址+(页号*页大小)，就可以定位到实际的地址空间了。
+
+MHeap负责将MSpan组织和管理起来，MHeap数据结构中的重要部分如图所示。
+[[../image/mheap.jpg]]
+free是一个分配池，从free[i]出去的MSpan每个大小都i页的,总共256个槽位。再大了之后，大小就不固定了，由large链起来。
+分配过程：
+如果能从free[]的分配池中分配，则从其中分配。如果发生切割则将剩余部分放回free[]中。比如要分配2页大小的空间，从图上2号槽位开始寻找，直到4号槽位有可用的MSpan，则拿一个出来，切出两页，剩余的部分再放回2号槽位中。
+否则从large链表中去分配，按BestFit算法去找一块空间
+
+化整为零简单，化零为整麻烦。回收的时候如果相邻的块是未使用的，要进行合并，否则一直划分下去就会产生很多碎片，找不到一个足够大小的连续空间。因为涉及到合并，回收会比分配复杂一些，所有就有什么伙伴算法，边界标识算法，位示图之类的。
+go在这里使用的大概类似于位示图。可以看到MHeap中有一个
+#+begin_src c
+	MSpan *map[1<<MHeapMap_Bits];
+#+end_src
+map作用就是将地址映射到相应的MSpan。每一页空间都会对应到map中的一个MSpan指针。给定一个地址，可以通过(地址-基地址)/页大小 得到页号，再通过map\[页号\]就得到了相应的MSpan结构体。
+
+回收过程：
+对一个MSpan，会通过它的址址查找它相邻的页的址址，再通过map映射得到与它相邻的MSpan，如果MSpan的state是未使用，则进行合并。归还到free[]分配池或者是large中。
+** MCache层次
+MCache层次跟MHeap层次非常像，也是一个分配池，对每个尺寸的类别都有一个空闲对象的单链表。不过没有那个MHeap中的large。
+
+每个M都有一个自己的局部内存缓存MCache，这样分配小对象的时候直接从MCache中分配，就不用加锁了。这就是tcmalloc分配非常高效的原因之一。
+分配过程就是直接从对应的尺寸类别中拿空闲对象，如果不够就找MCentral拿一些过来。
+释放过程就是放回到相应的链表中，如果空闲链表中对象太多，就归还一部分到MCentral。如果MCache空间太多也归还一部分到MCentral。
+** MCentral
+MCentral层次是作为MCache和MHeap的连接。对上，它从MHeap中申请MSpan;对下，它将MSpan划分成各种小尺寸对象，供MCache使用。
+
+注意，每个MSpan只会分割成同种大小的对象。每个MCentral也是只含同种大小的对象。MCentral结构中，有一个nonempty的MSpan链和一个empty的MSpan链，分别表示还有空间的MSpan和装满了对象的MSpan。
+如图。
+[[../image/mcentral.jpg]]
+分配还是很简单，直接从MCentral->nonempty->freelist分配。如果发现freelist空了，则说明这一块MSpan满了，将它移到MCentral->empty。
+前面我说过，回收比分配复杂，因为涉及到合并。这里用引用计数弄的。MSpan中每划出一个对象，则引用计数加一,每回收一个对象，则引用计数减一。如果减之后引用计数为零了，则说明这整块的MSpan已经没被使用了，可以将它归还给MHeap。
+
+忘记说了，前面MHeap结构体中也有用于管理MCentral的相关域。每种尺寸类别都会有一个central的，所以是NumSizeClasses的数组。MCentral中再通过MSpan划分成小对象的，就是从MSpan->freelist链起来。
+#+begin_src c
+	union {
+		MCentral;
+		byte pad[CacheLineSize];
+	} central[NumSizeClasses];
+#+end_src
+* 垃圾回收
+  这里假设读者对mark-sweep的垃圾回收算法有基本的了解，否则没办法读懂这部分的代码。
+** 位图标记和内存布局
+   目前go中的垃圾回收用的是标记清扫法.保守的垃圾回收,进行回收时会stoptheworld.
+
+每个机器字节(32位或64位)会对应4位的标记位.因此相当于64位系统中每个标记位图的字节对应16个堆字节.
+
+字节中的位先根据类型,再根据堆中的分配位置进行打包,因此每个64位的标记位图从上到下依次包括:\\
+#+begin_quote
+16位特殊位,对应堆字节\\
+16位垃圾回收的标记位\\
+16字节的 无指针/块边界 的标记位
+16位的 已分配 标记位\\
+#+end_quote
+这样设计使得对一个类型的相应的位进行遍历很容易.
+
+地址与它们的标记位图是分开存储和.以mheap.arena_start地址为边界,向上是实际使用的地址空间,向下是标记位图.比如在64位系统中,计算某个地址的标记位的公式如下:
+#+begin_quote
+偏移 = 地址 - mheap.arena_start\\
+标记位地址 = mheap.arena_start - 偏移/16 - 1 (32位中是偏移/8,就是每标记字节对应多少机器字节)\\
+移位 = 偏移 % 16
+标记位 = *标记位地址 >> 移位
+#+end_quote
+然后就可以通过 (标记位 & 垃圾回收标记位),(标记位 & 分配位),等来测试相应的位.
+其中已分配的标记为1<<0,无指针/块边界是1<<16,垃圾回收的标记位为1<<32,特殊位1<<48
+
+内存布局如下图所示:
+../image/gc_bitmap.jpg 
+
+** 基本的mark过程
+   go的垃圾回收还不是很完善.相应的代码在mgc0.c,可以看到这部分的代码质量相对其它部分是明显做得比较糙的.比如反复出现的模块都没写个函数:
+#+begin_src c
+off = (uintptr*)obj - (uintptr*)runtime·mheap->arena_start;
+bitp = (uintptr*)runtime·mheap->arena_start - off/wordsPerBitmapWord - 1;
+shift = off % wordsPerBitmapWord;
+xbits = *bitp;
+bits = xbits >> shift;
+#+end_src
+再比如说markallocated和markspan,markfreed做的事情都差不多一样的,却写了三个函数.
+由于代码写得不行,所以读得出吃力一些.先抛开这些不谈,还是从最简单的开始看,mark过程,从debug_scanblock开始读，这个跟普通的标记-清扫的垃圾回收算法结构是一样的.
+
+debug_scanblock函数是递归实现的,单线程的,更简单更慢的scanblock版本.该函数接收的参数分别是一个指针表示要扫描的地址,以及字节数.
+
+首先要将传入的地址,按机器字节大小对应.\\
+然后对待扫描区域的每个地址:\\
+找到它所在的MSpan,再找到该地址在MSpan中所处的对象地址(内存管理中分析过,go中的内存池中的小对象).\\
+既然有了对象的地址,则根据它找到对应位图里的标记位.前一小节已经写了从地址到标记位图的转换过程.\\
+判断标记位,如果是未分配则跳过.否则打上特殊位标记(debug_scanblock中用特殊位代码的mark位)完成标记.\\
+还要判断标记位中是否含有无指针的标记位,如果没有,则还要递归地调用debug_scanblock.
+
+如果对mark-sweep算法有点基础，读debug_scanblock应该不难理解。
+** 并行的垃圾回收操作
+整个的gc是以runtime.gc函数为入口的,它实际调用的是gc.进入gc后会先stoptheworld.接着添加标记的root.
+然后会设置markroot和sweepspan的并行任务。
+运行mark的任务，扫描块，运行sweep的任务，最后starttheworld并切换出去。
+   
+总体来讲现在版本的go中的垃圾回收是设计成多线程合作完成的，有个parfor.c文件中有相应代码。以前版本是单线程做的。在gc函数中调用了
+#+begin_src c	
+runtime·parforsetup(work.markfor, work.nproc, work.nroot, nil, false, markroot);
+runtime·parforsetup(work.sweepfor, work.nproc, runtime·mheap->nspan, nil, true, sweepspan);
+#+end_src
+是设置好回调让线程去执行markroot和sweepspan函数。
+
+实现方式就是设置一个工作缓存，原来debug_scanblock中是遇到一个新的指针就递归地调用处理，而现在是遇到一个新的指针就进队列加到工作缓存中。
+功能上差不多，一个是非递归一个是递归。scanblock从工作区开始扫描，扫描到的加个mark标记，如果遇到可能的指针，不是递归处理而是加到工作队列中。这样可以多个线程同时进行。
+并行设计中，有设置工作区的概念，多个worker同时去工作缓存中取数据出来处理，如果自己的任务做完了，就会从其它的任务中“偷”一些过来执行。
+
+** 精确的垃圾回收以及虚拟机
+scanblock函数非常难读，我觉得应该好好重构一下。上面有两个大的循环，第一个作用是对整个扫描块区域，将类型信息提取出来。另一个大循环是实现一个虚拟机操作码的解析执行。
+
+为什么会弄个虚拟机呢？目前我也不明白为啥这么搞。反正垃圾回收的操作都被弄成了操作码，用虚拟机去解释执行的。不同类型的对象，由于垃圾回收的方式不一样，把各种类型的回收操作独立出来做成操作码，可能是灵活度更大吧。
+
+go是这样弄的啊：
+从一个地址可以找到相应的标记位图。\\
+过程是通过地址到MSpan，然后MSpan->type.compression得到一个type的描述\\
+再由type描述得到类型信息\\
+类型信息是一个Type结构体(在type.h头文件中定义),其中有个void *gc域\\
+gc其实就是代码段了。通过虚拟机解释其中的操作码完成各种类型的对象的垃圾回收操作。
+
+回收ptr，slice,string...不同类型都会对应到不同的操作码。其中也有一些小技巧的东西比如type描述符。它是一个uintptr，由于内存分配是机器字节对齐的，所以地址就只用到了高位。type描述符中高位存放的是Type结构体的指针，低位可以用来存放类型。通过
+#+begin_src c
+t = (Type*)(type & ~(uintptr)(PtrSize-1));
+#+end_src
+就可以从type的描述符得到Type结构体，而通过
+#+begin_src c
+type & (PtrSize-1)
+#+end_src
+就可以得到类型。
+
+gc的触发是由一个gcpercent的变量控制的,当新分配的内存占已在使用中的内存的比例超过gcprecent时就会触发.比如说gcpercent=100,当前使用了4M,当内存分配到达8M时就会再次gc.
+* 番外篇
+读代码始终有些东西还是很难看懂，如果自己写代码，就能真正理解了，所以这一节就尝试自己写写代码。要写的是一个收集当前内存状态的函数，自己写以便理解前面内存管理的垃圾回收的一些东西。
+
+在go中调用c代码，如果没有调用c的库函数，是可以不必要用到cgo的。c函数中可以使用go的运行时代码，比如runtime·printf。
+建个test文件夹，写个test.go文件，上面进行声明：
+#+begin_src c
+package c
+func MemInfo()
+#+end_src
+然后是test文件夹下，建个test.c实现MemInfo函数。函数名是void ·MemInfo()，而不是void MemInfo()，注意函数中的那个·符号。
+
+在这个c文件中是可以访问go的runtime的全局对象的，所以runtime·mheap就是堆了。这是一个MHeap结构体，通过上面的allspans域就可以访问到所有的MSpan。根据MSpan结构中有状态信息，可以跳过不关心的MSpan。
+#+begin_src c
+h = runtime·mheap;
+for(i=0; i < h->nspan; i++) {
+	s = h->allspans[i];
+	if(s == nil || s->state != MSpanInUse)
+		continue;
+}
+#+end_src
+到这里时会遇到一个问题，MSpanInUse未定义，没关系，把go源代码中的malloc.h拷到test文件夹就行了。后面还会用到type.h，也先拷过来。只有runtime.h是go编译c代码时会默认使用，其它的runtime中的头文件，想用的话拷过来就好了。不过想任意调用runtime中的函数还是不行的，只有runtime.h中声明的runtime·xxx是可以调用的，像malloc.h中声明的函数都调用不了。
+
+接下来就是对每块MSpan进行分析了。对照malloc.h文件中MSpan的结构体定义，可以打印出这个结构体的一些信息:
+#+begin_src c
+MSpan *s;
+runtime·printf("页号:%D,页数:%D,大小类:%d，元素大小:%D\n", s->start, s->npages, s->sizeclass, s->elemsize);
+#+end_src
+
+MSpan的types是一个MTypes结构，继续打印出类型信息。根据MTypes中的compression的不同，data对应的是不同的东西。
+#+begin_src c
+	switch(s->types.compression) {
+	case MTypes_Empty:
+		break;
+	case MTypes_Single:
+		runtime·printf("MTypes_Single\n");
+		break;
+	case MTypes_Words:
+		runtime·printf("MTypes_Words\n");
+		break;
+	case MTypes_Bytes:
+		runtime·printf("MTypes_Bytes\n");
+        }
+#+end_src
+
+这里的类型信息是关于整块MSpan的。MTypes_Empty表明这一块的类型信息不可用。MTypes_Single表示这整个MSpan存的都是一个对象。MTypes_Bytes是这个MSpan中存放的不同对象类型在7种以内。而MTypes_Words表明这块MSpan存放了超过8种以上的不同类型的对象。
+
+MTypes_XXX是关于整块MSpan在存放的对象类型的信息。比如挑其中MTypes_Bytes的MSpan为例，可以继续再看具体对象的类型信息。data[i]是一个uintptr值，值的高位是指向Type结构体的指针，低位是类型信息。
+#+begin_src c
+ptr = data[i]
+Type *t = (Type*)(ptr & ~(uintptr)(PtrSize-1));
+ptr & (PtrSize-1)
+#+end_src
+MTypes_Bytes中共有最多7种类型信息，可能data\[1\]到data\[7\]得到对应的Type结构体指针。然后可以继续打印Type结构体内的一些信息出来。
+
+最后代码放在[[http://github.com/tiancaiamao/go-internals/test/][这里]] 了，想跑的可以拿去玩一玩。
+#+begin_src c
+package main
+
+import (
+	"github.com/tiancaiamao/go-internals/test"
+	"github.com/syndtr/goleveldb/leveldb"
+	"github.com/syndtr/goleveldb/leveldb/storage"
+	"github.com/syndtr/goleveldb/leveldb/opt"
+)
+
+type S struct {
+	aa uint32
+	bb []byte
+	cc string
+}
+
+func main() {
+	for i:=0; i <100000; i++ {
+		workthegc()
+	}
+	for i:=0; i<200; i++ {
+		func() []S {
+			return make([]S,300)
+		}()
+	}
+
+	stor, _ := storage.OpenFile("test.db")
+	defer stor.Close()
+	db, _ := leveldb.Open(stor, &opt.Options{Flag: opt.OFCreateIfMissing})
+	defer db.Close()
+
+	ro := &opt.ReadOptions{}
+	wo := &opt.WriteOptions{}
+	db.Get([]byte("key"), ro)
+	db.Put([]byte("key"), []byte("value"), wo)
+	db.Delete([]byte("key"), wo)
+
+	test.MemInfo()
+}
+
+func workthegc() []byte {
+	return make([]byte, 1029)
+}
+#+end_src
+额...我啥都不会，就是精通"hello world"，哈哈～
+* 类型系统
+** chan类型的实现
+   chan类型的实现在文件chan.c中.channel其实就是一个数据结构而已,如下图所示:
+   ../image/chan.jpg
+   其实它本身是一个循环队列,qcount记录了队列总数据个数,dataqsiz记录循环队列的大小,elemalg是元素操作的一个Alg结构体,记录下元素的操作.如copy函数,equal函数,hash函数等.
+   recvq和sendq是两个链表,分别记录下因读chan阻塞和因写chan而阻塞的goroutine.它是一个SudoG结构,该结构中主要的就是一个g和一个elem.如果g阻塞于chan了,那么它就被挂在recvq或sendq中,对应的数据是放在elem中的.
+   
+   如果是带缓冲区的chan,则缓冲区数据实际上是接着Hchan结构体中分配的.会分配
+   #+begin_src c
+c = (Hchan*)runtime路mal(n + hint*elem->size);
+   #+end_src
+
+   以runtime.chansend为例来看向chan中写数据的过程.
+
+   先要区分是同步还是异步.同步是指chan是不带缓冲区的,因此可能写阻塞.而异步是指chan带缓冲区,只有缓冲区满才阻塞.
+   同步的情况,首先会看recvq中有没有因读该管道而阻塞的goroutine,如果有,则把数据拷贝到它的elem中,将它置为ready,然后函数返回.
+   否则要将当前goroutine和数据作为SudoG结构体,挂到通道的阻塞队列中.
+
+   异步的情况,如果缓冲区满了,也是要将当前goroutine和数据一起作为SudoG结构体挂在sendq队列中的.
+   否则也是先看有没有recvq,有就唤醒.没有就将数据放到通过的缓冲区中.
+   
+runtime.chanrecv跟chansend一个样子的.只不过一个是收一个是发.
+
+select-case被中的chan编译成了if-else.比如
+#+begin_src c
+select {
+case v = <-c:
+        ...foo
+default:
+        ...bar
+}
+#+end_src
+会被编译为:
+#+begin_src c
+if selectnbrecv(&v, c) {
+        ...foo
+} else {
+        ...bar
+}
+#+end_src
+
+类似地
+#+begin_src c
+select {
+case v, ok = <-c:
+	... foo
+default:
+	... bar
+}
+#+end_src
+会被编译为:
+#+begin_src c
+if c != nil && selectnbrecv2(&v, &ok, c) {
+	... foo
+} else {
+	... bar
+}
+#+end_src
+select-case中的case是随机的.而不像switch-case那样一条一条的顺序.如何实现随机的呢?
+其实上面用到了Scase和Select数据结构.在Select数据结构中有个Scase数组,记录下了每一个Scase.
+然后将数组元素随机排列,这样就可以将Scase乱序了.
+
+** interface的实现
+
+假设我们把类型分为具体类型和接口类型。
+
+具体类型例如type myint int32 或type mytype struct {...}
+
+接口类型是例如type I interface {}
+
+接口类型的值，在内存中的存放形式是两个域，一个指向真实数据(具体类型的数据)的指针，一个itab指针。
+
+具体见$GOROOT/src/pkg/reflect/value.go 的type nonEmptyInterface struct {...} 定义
+
+itab中包含了数据（具体类型的）的类型描述符信息和一个方法表
+
+方法表就类似于C++中的对象的虚函数表，上面存的全是函数指针。
+
+方法表是在接口值在初始化的时候动态生成的。具体的说：
+
+对每个具体类型，都会生成一个类型描述结构，这个类型描述结构包含了这个类型的方法列表
+
+对接口类型，同样也生成一个类型描述结构，这个类型描述结构包含了接口的方法列表
+
+接口值被初始化的时候，利用具体类型的方法表来动态生成接口值的方法表。
+
+比如说var i I = mytype的过程就是:
+
+构造一个接口类型I的值，值的第一个域是一个指针，指向mytype数据的一个副本。注意是副本而不是mytype数据本身，因为如果不这样的话改变了mytype的值，i的值也被改变。
+
+值的第二个域是指向一个动态构造出来的itab，itab的类型描述符域是存mytype的类型描述符，itab的方法表域是将mytype的类型描述符的方法表的对应函数指针拷贝过来。构造itab的代码在$ROOT/src/pkg/runtime/iface.c中的函数
+
+static Itab*  itab(InterfaceType *inter, Type *type, int32 canfail)
+
+这里还有个小细节是类型描述符的方法表是按方法名排序过的，这样itab的动态构建过程更快一些，复杂度就是O(接口类型方法表长度+具体类型方法表长度)
+
+可能有人有过疑问：编译器怎么知道某个类型是否实现了某个接口呢？这里正好解决了这个疑问：
+
+在var i I = mytype 的过程中，如果发现mytype的类型描述符中的方法表跟接口I的类型描述符中的方法表对不上，这个初始化过程就会出错，提示说mytype没有实现接口中的某某方法。
+
+再暴一个细节，所有的方法，在编译过程中都被转换成了函数
+
+比如说 func (s *mytype) Get()会被变成func Get(s *mytype)。
+
+接口值进行方法调用的时候，会找到itab中的方法表的某个函数指针，其第一个参数传的正是这个接口值的第一个域，即指向具体类型数据的指针。
+
+在具体实现上面还有一些优化过程，比如接口值的真实数据指针那个域，如果真实数据大小是32位，就不用存指针了，直接存数据本身。再有就是对类接口类型interface{}，其itab中是不需要方法表的，所以这里不是itab而直接是一个指向真实数据的类型描述结构的指针。
+
+------------------------------------------------------------------------------------------------- 
+** 关于反射
+* 收集的一些关于go internals的链接：
+
+http://code.google.com/p/try-catch-finally/wiki/GoInternals
+
+http://research.swtch.com/gopackage
+
+http://research.swtch.com/interfaces
+
+http://research.swtch.com/goabstract 
+
+http://blog.csdn.net/hopingwhite/article/details/5782888
+
+http://www.douban.com/note/251142022/ 调度器
+
+http://shiningray.cn/tcmalloc-thread-caching-malloc.html tcmalloc内存管理
+
+方法原码分析
+1独立的函数
+2对象怎样调用方法
+3组合对象(或接口)后怎样调用方法
+4接口怎样调用方法
+
+
+
+传值和传引用
+
+func httpGet(url string, wg sync.WaitGroup) {
+        defer wg.Done()
+        http.Get(url)    
+}
+var wg sync.WaitGroup
+var urls = []string{
+    "http://www.golang.org/",
+    "http://www.google.com/",
+    "http://www.somestupidname.com/",
+}
+for _, url := range urls {
+    wg.Add(1)
+    go httpGet(url, wg)
+}
+wg.Wait()
+
+运行，会发生程序死锁。为什么呢？因为Go语言是传值约定
+
+go httpGet(url, wg)
+
+httpGet中的wg实际上是复制的一份参数，对它的修改不会影响到原来的wg，也就是wg.Done()不会减少原来的wg的计数，于是发生了死锁。
+
+
+
+map中使用[]操作符获得的对象是不能直接修改状态
+
+1.直接对map对象使用[]操作符获得的对象不能直接修改状态
+package main
+func main() {
+type person struct {age int}
+m := map[string]person{"steve":{10}}
+m["steve"].age = 100  // 编译错误：cannot assign to m["steve"].age
+}
+
+2.通过查询map获得的对象是个拷贝，对此对象的修改不能影响原有对象的状态
+package main
+func main() {
+type person struct {age int}
+m := map[string]person {"steve":{10}}
+p := m["steve"]
+p.age = 100 // 没有改变map中对象的状态！
+println(p.age)
+println(m["steve"].age)
+}
+输出：
+100
+10
+解决方法：
+1)map中存储指针而不是结构体
+package main
+func main() {
+type person struct {age int}
+m := map[string]*person{"steve":{10}}
+p := m["steve"]
+p.age = 100
+println(p.age)
+println(m["steve"].age)
+}
+输出：
+100
+100
+2)修改了对象状态以后重新加到map里
+
+
+import "fmt"
+type ErrLogin int
+func (n ErrLogin) Error() string {
+return fmt.Sprintf("failed to login(%x)", n)
+}
+func (n ErrLogin) Value() int {
+return int(n)
+}
+然后就死循环了。。。
+死循环的原因是，Sprintf是会通过接口查询知道n是一个接口类型，所以就会调用n的Error函数，但这个fmt.Sprintf本身就是在Error函数里调用的，所以就构成循环调用了。j
+
+
+
+以上代码有没有什么问题？如果看出问题，OK，以下的不用再看了；没看出问题的请继续。
+
+我们把以下代码用data race detector试一下，看看有什么结果：
+steve@stevepc:~/play$ go build -race race.go
+steve@stevepc:~/play$ ./race
+==================
+WARNING: DATA RACE
+Write by goroutine 5:
+  main.func·001()
+      /home/steve/play/race.go:16 +0x76
+  gosched0()
+      /usr/local/go/src/pkg/runtime/proc.c:1218 +0x9f
+
+Previous write by goroutine 4:
+  main.func·001()
+      /home/steve/play/race.go:18 +0x9f
+  gosched0()
+      /usr/local/go/src/pkg/runtime/proc.c:1218 +0x9f
+
+Goroutine 5 (running) created at:
+  main.main()
+      /home/steve/play/race.go:21 +0x1aa
+  runtime.main()
+      /usr/local/go/src/pkg/runtime/proc.c:182 +0x91
+
+Goroutine 4 (finished) created at:
+  main.main()
+      /home/steve/play/race.go:21 +0x1aa
+  runtime.main()
+      /usr/local/go/src/pkg/runtime/proc.c:182 +0x91
+
+==================
+Found 1 data race(s)
+
+我们看到data race detector有报告data race，也就是多个goroutine同时访问同一个数据。根据上面的报告，data race发生在16和18行，对应的代码是"count++"和"count--"。即同时有一个goroutine在执行"count++"而另一个goroutine在执行"count--"。
+这怎么可能呢？ch的长度明明是1，怎么可能两个goroutine同时去访问count呢？

@@ -1,0 +1,39 @@
+
+// ---------------------------------------------------------
+// EXERCISE: Swap
+//
+//  Using funcs, swap values through pointers, and swap
+//  the addresses of the pointers.
+//
+//
+//  1- Swap the values through a func
+//
+//     a- Declare two float variables
+//
+//     b- Declare a func that can swap the variables' values
+//        through their memory addresses
+//
+//     c- Pass the variables' addresses to the func
+//
+//     d- Print the variables
+//
+//
+//  2- Swap the addresses of the float pointers through a func
+//
+//     a- Declare two float pointer variables and,
+//        assign them the addresses of float variables
+//
+//     b- Declare a func that can swap the addresses
+//        of two float pointers
+//
+//     c- Pass the pointer variables to the func
+//
+//     d- Print the addresses, and values that are
+//        pointed by the pointer variables
+//
+// ---------------------------------------------------------
+
+package main
+
+func main() {
+}

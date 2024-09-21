@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/wxyyxc1992/coding-snippets/language/go/concurrent/atomic"
+	"test.com/atomic"
 )
 
 func main() {

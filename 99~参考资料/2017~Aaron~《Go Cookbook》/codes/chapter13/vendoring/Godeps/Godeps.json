@@ -1,0 +1,19 @@
+{
+	"ImportPath": "github.com/agtorre/go-cookbook/chapter13/vendoring",
+	"GoVersion": "go1.8",
+	"GodepVersion": "v79",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/sirupsen/logrus",
+			"Comment": "v0.11.2-1-g3f603f4",
+			"Rev": "3f603f494d61c73457fb234161d8982b9f0f0b71"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/unix",
+			"Rev": "dbc2be9168a660ef302e04b6ff6406de6f967473"
+		}
+	]
+}

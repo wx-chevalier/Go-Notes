@@ -1,0 +1,58 @@
+{
+	"ImportPath": "github.com/agtorre/go-cookbook/chapter10/monitoring",
+	"GoVersion": "go1.8",
+	"GodepVersion": "v79",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/beorn7/perks/quantile",
+			"Rev": "4c0e84591b9aa9e6dcfdf3e020114cd81f89d5f9"
+		},
+		{
+			"ImportPath": "github.com/golang/protobuf/proto",
+			"Rev": "69b215d01a5606c843240eab4937eab3acee6530"
+		},
+		{
+			"ImportPath": "github.com/matttproud/golang_protobuf_extensions/pbutil",
+			"Comment": "v1.0.0-2-gc12348c",
+			"Rev": "c12348ce28de40eed0136aa2b644d0ee0650e56c"
+		},
+		{
+			"ImportPath": "github.com/prometheus/client_golang/prometheus",
+			"Comment": "v0.8.0-75-g7d94842",
+			"Rev": "7d9484283ebefa862b5b7727d4344cfdf9a0d138"
+		},
+		{
+			"ImportPath": "github.com/prometheus/client_golang/prometheus/promhttp",
+			"Comment": "v0.8.0-75-g7d94842",
+			"Rev": "7d9484283ebefa862b5b7727d4344cfdf9a0d138"
+		},
+		{
+			"ImportPath": "github.com/prometheus/client_model/go",
+			"Comment": "model-0.0.2-14-g6f38060",
+			"Rev": "6f3806018612930941127f2a7c6c453ba2c527d2"
+		},
+		{
+			"ImportPath": "github.com/prometheus/common/expfmt",
+			"Rev": "13ba4ddd0caa9c28ca7b7bffe1dfa9ed8d5ef207"
+		},
+		{
+			"ImportPath": "github.com/prometheus/common/internal/bitbucket.org/ww/goautoneg",
+			"Rev": "13ba4ddd0caa9c28ca7b7bffe1dfa9ed8d5ef207"
+		},
+		{
+			"ImportPath": "github.com/prometheus/common/model",
+			"Rev": "13ba4ddd0caa9c28ca7b7bffe1dfa9ed8d5ef207"
+		},
+		{
+			"ImportPath": "github.com/prometheus/procfs",
+			"Rev": "6ac8c5d890d415025dd5aae7595bcb2a6e7e2fad"
+		},
+		{
+			"ImportPath": "github.com/prometheus/procfs/xfs",
+			"Rev": "6ac8c5d890d415025dd5aae7595bcb2a6e7e2fad"
+		}
+	]
+}

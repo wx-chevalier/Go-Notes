@@ -36,7 +36,7 @@ func main() {
 	color := string(orange)
 	fmt.Println(color)
 
-	// 这不能运行。 65.0 是 float.
+	// 这不能运行。65.0 是 float.
 	// fmt.Println(string(65.0))
 
 	// 这能运行: 这有两个 byte 值

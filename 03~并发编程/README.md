@@ -17,7 +17,7 @@ CSP 理论的核心思想非常简单：通过同步通信来实现并发。在�
 
 Go 语言在并发编程方面提供了两种主要的方式:一种是基于 CSP 理论的通道(Channel)通信,另一种是传统的内存同步访问机制。这让我们在编写并发代码时需要做出选择 - 是使用 Channel 还是使用传统的锁机制。
 
-![并发的选择](https://assets.ng-tech.icu/item/20230418155409.png)
+![并发的选择](https://ngte-superbed.oss-cn-beijing.aliyuncs.com/item/20230418155409.png)
 
 在选择并发方案时,我们可以考虑以下几个关键问题:
 
